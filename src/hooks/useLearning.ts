@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import type { Book, Course } from '../types/learning';
+import { useCloudSyncedState } from './useCloudSync';
 
 const BOOKS_KEY = 'mydayplan-books';
 const COURSES_KEY = 'mydayplan-courses';
@@ -21,41 +22,33 @@ function loadCourses(): Course[] {
   return [];
 }
 
+function saveBooks(books: Book[]) { localStorage.setItem(BOOKS_KEY, JSON.stringify(books)); }
+function saveCourses(courses: Course[]) { localStorage.setItem(COURSES_KEY, JSON.stringify(courses)); }
+
 export function useLearning() {
-  const [books, setBooks] = useState<Book[]>(loadBooks);
-  const [courses, setCourses] = useState<Course[]>(loadCourses);
+  const [books, setBooks, resetBooksCloud] = useCloudSyncedState<Book[]>(BOOKS_KEY, loadBooks, saveBooks);
+  const [courses, setCourses, resetCoursesCloud] = useCloudSyncedState<Course[]>(COURSES_KEY, loadCourses, saveCourses);
 
-  useEffect(() => {
-    localStorage.setItem(BOOKS_KEY, JSON.stringify(books));
-  }, [books]);
-
-  useEffect(() => {
-    localStorage.setItem(COURSES_KEY, JSON.stringify(courses));
-  }, [courses]);
-
-  // Books Actions
   const addBook = useCallback((data: Omit<Book, 'id' | 'createdAt'>) => {
     setBooks(prev => [{ ...data, id: uuidv4(), createdAt: new Date().toISOString() }, ...prev]);
-  }, []);
+  }, [setBooks]);
 
   const updateBook = useCallback((id: string, updates: Partial<Book>) => {
     setBooks(prev => prev.map(b => b.id === id ? { ...b, ...updates } : b));
-  }, []);
+  }, [setBooks]);
 
   const deleteBook = useCallback((id: string) => {
     setBooks(prev => prev.filter(b => b.id !== id));
-  }, []);
+  }, [setBooks]);
 
-  // Courses Actions
   const addCourse = useCallback((data: Omit<Course, 'id' | 'createdAt'>) => {
     setCourses(prev => [{ ...data, id: uuidv4(), createdAt: new Date().toISOString() }, ...prev]);
-  }, []);
+  }, [setCourses]);
 
   const updateCourse = useCallback((id: string, updates: Partial<Course>) => {
     setCourses(prev => prev.map(c => {
       if (c.id !== id) return c;
       const updated = { ...c, ...updates };
-      // Recalculate progress if lessons changed
       if (updates.lessons) {
         const total = updated.lessons.length;
         const completed = updated.lessons.filter(l => l.completed).length;
@@ -63,30 +56,28 @@ export function useLearning() {
       }
       return updated;
     }));
-  }, []);
+  }, [setCourses]);
 
   const deleteCourse = useCallback((id: string) => {
     setCourses(prev => prev.filter(c => c.id !== id));
-  }, []);
+  }, [setCourses]);
 
   const toggleLesson = useCallback((courseId: string, lessonId: string) => {
     setCourses(prev => prev.map(c => {
       if (c.id !== courseId) return c;
-      const updatedLessons = c.lessons.map(l => 
+      const updatedLessons = c.lessons.map(l =>
         l.id === lessonId ? { ...l, completed: !l.completed } : l
       );
       const total = updatedLessons.length;
       const completed = updatedLessons.filter(l => l.completed).length;
-      return {
-        ...c,
-        lessons: updatedLessons,
-        progressPercent: total > 0 ? Math.round((completed / total) * 100) : 0
-      };
+      return { ...c, lessons: updatedLessons, progressPercent: total > 0 ? Math.round((completed / total) * 100) : 0 };
     }));
-  }, []);
+  }, [setCourses]);
 
   return {
     books, addBook, updateBook, deleteBook,
-    courses, addCourse, updateCourse, deleteCourse, toggleLesson
+    courses, addCourse, updateCourse, deleteCourse, toggleLesson,
+    resetBooks: () => { localStorage.removeItem(BOOKS_KEY); resetBooksCloud(); setBooks([]); },
+    resetCourses: () => { localStorage.removeItem(COURSES_KEY); resetCoursesCloud(); setCourses([]); },
   };
 }

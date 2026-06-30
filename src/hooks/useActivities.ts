@@ -1,7 +1,8 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import type { Activity, DayKey, SessionType } from '../types';
 import { DEFAULT_ACTIVITIES } from '../types';
+import { useCloudSyncedState } from './useCloudSync';
 
 const STORAGE_KEY = 'mydayplan-activities';
 
@@ -23,12 +24,8 @@ function getTodayKey(): DayKey {
 }
 
 export function useActivities() {
-  const [activities, setActivities] = useState<Activity[]>(loadActivities);
+  const [activities, setActivities, resetCloud] = useCloudSyncedState<Activity[]>(STORAGE_KEY, loadActivities, saveActivities);
   const [selectedDay, setSelectedDay] = useState<DayKey>(getTodayKey());
-
-  useEffect(() => {
-    saveActivities(activities);
-  }, [activities]);
 
   const toggleComplete = useCallback((id: string) => {
     setActivities(prev => prev.map(a => a.id === id ? { ...a, completed: !a.completed } : a));
@@ -67,8 +64,9 @@ export function useActivities() {
 
   const resetData = useCallback(() => {
     localStorage.removeItem(STORAGE_KEY);
+    resetCloud();
     setActivities(DEFAULT_ACTIVITIES);
-  }, []);
+  }, [resetCloud, setActivities]);
 
   const dayActivities = activities.filter(a => a.day === selectedDay);
   const completedCount = dayActivities.filter(a => a.completed).length;

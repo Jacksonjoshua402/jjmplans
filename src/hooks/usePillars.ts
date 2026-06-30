@@ -1,7 +1,8 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import type { Pillar } from '../types/pillars';
 import { DEFAULT_PILLARS } from '../types/pillars';
+import { useCloudSyncedState } from './useCloudSync';
 
 const STORAGE_KEY = 'mydayplan-pillars';
 
@@ -22,27 +23,21 @@ function savePillars(pillars: Pillar[]) {
 }
 
 export function usePillars() {
-  const [pillars, setPillars] = useState<Pillar[]>(loadPillars);
-
-  useEffect(() => { savePillars(pillars); }, [pillars]);
+  const [pillars, setPillars, resetCloud] = useCloudSyncedState<Pillar[]>(STORAGE_KEY, loadPillars, savePillars);
 
   const updatePillar = useCallback((id: string, updates: Partial<Pillar>) => {
     setPillars(prev => prev.map(p => p.id === id ? { ...p, ...updates } : p));
-  }, []);
+  }, [setPillars]);
 
   const resetPillars = useCallback(() => {
     localStorage.removeItem(STORAGE_KEY);
+    resetCloud();
     setPillars(DEFAULT_PILLARS.map(p => ({ ...p, id: uuidv4() })));
-  }, []);
+  }, [resetCloud, setPillars]);
 
   const togglePillar = useCallback((id: string) => {
     setPillars(prev => prev.map(p => p.id === id ? { ...p, isActive: !p.isActive } : p));
-  }, []);
+  }, [setPillars]);
 
-  return {
-    pillars,
-    updatePillar,
-    resetPillars,
-    togglePillar,
-  };
+  return { pillars, updatePillar, resetPillars, togglePillar };
 }

@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import type { MessageNote } from '../types/messages';
+import { useCloudSyncedState } from './useCloudSync';
 
 const STORAGE_KEY = 'mydayplan-messages';
 
@@ -40,40 +41,27 @@ export async function processFile(file: File) {
 }
 
 export function useMessages() {
-  const [messages, setMessages] = useState<MessageNote[]>(loadMessages);
-
-  useEffect(() => {
-    saveMessages(messages);
-  }, [messages]);
+  const [messages, setMessages, resetCloud] = useCloudSyncedState<MessageNote[]>(STORAGE_KEY, loadMessages, saveMessages);
 
   const addMessage = useCallback((msg: Omit<MessageNote, 'id' | 'createdAt'>) => {
-    const newMsg: MessageNote = {
-      ...msg,
-      id: uuidv4(),
-      createdAt: new Date().toISOString(),
-    };
+    const newMsg: MessageNote = { ...msg, id: uuidv4(), createdAt: new Date().toISOString() };
     setMessages(prev => [newMsg, ...prev]);
     return newMsg;
-  }, []);
+  }, [setMessages]);
 
   const updateMessage = useCallback((id: string, updates: Partial<MessageNote>) => {
     setMessages(prev => prev.map(m => m.id === id ? { ...m, ...updates } : m));
-  }, []);
+  }, [setMessages]);
 
   const deleteMessage = useCallback((id: string) => {
     setMessages(prev => prev.filter(m => m.id !== id));
-  }, []);
+  }, [setMessages]);
 
   const resetMessages = useCallback(() => {
     localStorage.removeItem(STORAGE_KEY);
+    resetCloud();
     setMessages([]);
-  }, []);
+  }, [resetCloud, setMessages]);
 
-  return {
-    messages,
-    addMessage,
-    updateMessage,
-    deleteMessage,
-    resetMessages,
-  };
+  return { messages, addMessage, updateMessage, deleteMessage, resetMessages };
 }

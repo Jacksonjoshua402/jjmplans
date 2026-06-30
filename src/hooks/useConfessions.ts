@@ -1,6 +1,7 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import type { Confession } from '../types/confessions';
+import { useCloudSyncedState } from './useCloudSync';
 
 const STORAGE_KEY = 'mydayplan-confessions';
 
@@ -21,33 +22,32 @@ function saveConfessions(items: Confession[]) {
 }
 
 export function useConfessions() {
-  const [confessions, setConfessions] = useState<Confession[]>(loadConfessions);
-
-  useEffect(() => { saveConfessions(confessions); }, [confessions]);
+  const [confessions, setConfessions, resetCloud] = useCloudSyncedState<Confession[]>(STORAGE_KEY, loadConfessions, saveConfessions);
 
   const addConfession = useCallback((data: Omit<Confession, 'id' | 'createdAt'>) => {
     setConfessions(prev => [
       { ...data, id: uuidv4(), createdAt: new Date().toISOString() },
       ...prev,
     ]);
-  }, []);
+  }, [setConfessions]);
 
   const updateConfession = useCallback((id: string, updates: Partial<Confession>) => {
     setConfessions(prev => prev.map(c => c.id === id ? { ...c, ...updates } : c));
-  }, []);
+  }, [setConfessions]);
 
   const deleteConfession = useCallback((id: string) => {
     setConfessions(prev => prev.filter(c => c.id !== id));
-  }, []);
+  }, [setConfessions]);
 
   const toggleFavorite = useCallback((id: string) => {
     setConfessions(prev => prev.map(c => c.id === id ? { ...c, isFavorite: !c.isFavorite } : c));
-  }, []);
+  }, [setConfessions]);
 
   const resetConfessions = useCallback(() => {
     localStorage.removeItem(STORAGE_KEY);
+    resetCloud();
     setConfessions([]);
-  }, []);
+  }, [resetCloud, setConfessions]);
 
   return { confessions, addConfession, updateConfession, deleteConfession, toggleFavorite, resetConfessions };
 }
