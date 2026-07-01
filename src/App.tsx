@@ -183,13 +183,22 @@ export default function App() {
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-8">
           {/* Page heading */}
           <div className="text-center mb-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 mb-4">
               <ListChecks size={14} className="text-amber-400" />
               <span className="text-xs font-bold tracking-[0.2em] text-amber-400 uppercase">Daily Schedule</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-white" style={{ fontFamily: "'Montserrat', 'Inter', sans-serif" }}>
+            <h1
+              className="text-6xl md:text-8xl font-extrabold tracking-tight leading-none mb-1"
+              style={{
+                fontFamily: "'Montserrat', 'Inter', sans-serif",
+                WebkitTextStroke: '2px rgba(251,191,36,0.4)',
+                color: '#ffffff',
+                textShadow: '0 0 40px rgba(251,191,36,0.15)',
+              }}
+            >
               MY DAY PLAN
             </h1>
+            <p className="text-xs font-bold tracking-[0.3em] text-amber-400/60 mt-2 uppercase">JJM 2026 ✦ Personal Growth Plan</p>
           </div>
           <Header
             selectedDay={selectedDay}

@@ -205,16 +205,11 @@ export default function PrayerSection() {
                 <p className="text-violet-300/60 text-xs">Complete all 3 sessions today</p>
               </div>
               <div className="ml-auto">
-                {(() => {
-                  const done = (['morning','afternoon','evening'] as const).filter(s =>
-                    tonguesSessions.find(t => t.session === s && t.date === dateFilter && t.completed)
-                  ).length;
-                  return (
-                    <span className="text-xs font-bold text-violet-300 bg-violet-500/20 px-2 py-1 rounded-full border border-violet-500/30">
-                      {done}/3 done
-                    </span>
-                  );
-                })()}
+                <span className="text-xs font-bold text-violet-300 bg-violet-500/20 px-2 py-1 rounded-full border border-violet-500/30">
+                  {(['morning','afternoon','evening'] as const).filter(s =>
+                    (tonguesSessions || []).find(t => t.session === s && t.date === dateFilter && t.completed)
+                  ).length}/3 done
+                </span>
               </div>
             </div>
             <div className="grid grid-cols-3 gap-2">
@@ -223,12 +218,13 @@ export default function PrayerSection() {
                 { key: 'afternoon' as const, label: 'Afternoon', emoji: '☀️', time: '12–2 PM' },
                 { key: 'evening' as const,   label: 'Evening',   emoji: '🌙', time: '6–9 PM' },
               ]).map(s => {
-                const entry = tonguesSessions.find(t => t.session === s.key && t.date === dateFilter);
+                const safeSessions = tonguesSessions || [];
+                const entry = safeSessions.find(t => t.session === s.key && t.date === dateFilter);
                 const done = entry?.completed || false;
                 return (
                   <button
                     key={s.key}
-                    onClick={() => toggleTongues(s.key, dateFilter)}
+                    onClick={() => toggleTongues && toggleTongues(s.key, dateFilter)}
                     className={`flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl border font-semibold transition-all ${
                       done
                         ? 'bg-violet-500/20 border-violet-500/50 text-violet-300'

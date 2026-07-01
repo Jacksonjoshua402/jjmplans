@@ -45,16 +45,6 @@ export default function Header({
       </div>
 
       {/* Title */}
-      <h1
-        className="text-5xl md:text-7xl font-bold mb-4 tracking-tight"
-        style={{
-          fontFamily: "'Montserrat', 'Inter', sans-serif",
-          color: '#ffffff',
-        }}
-      >
-        My day plan
-      </h1>
-
       {/* Today's date */}
       <div className="flex items-center justify-center gap-3 mb-4">
         <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/60 border border-slate-700/50">
