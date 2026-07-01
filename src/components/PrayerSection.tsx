@@ -56,9 +56,9 @@ function TimerBanner({ hour, duration, onDone, onStop }: {
 
 export default function PrayerSection() {
   const {
-    points, hourlyPlan, activeDuration,
+    points, hourlyPlan, activeDuration, tonguesSessions,
     addPrayerPoint, togglePrayerPoint, deletePrayerPoint,
-    toggleHourly, setDuration, resetPrayer,
+    toggleHourly, setDuration, toggleTongues, resetPrayer,
   } = usePrayer();
 
   const [subTab, setSubTab] = useState<'journal' | 'hourly'>('journal');
@@ -196,11 +196,63 @@ export default function PrayerSection() {
             </p>
           </div>
 
+          {/* 30 Minutes in Tongues */}
+          <div className="rounded-2xl border border-violet-500/30 bg-violet-500/5 p-4">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-lg">🔥</span>
+              <div>
+                <p className="text-white font-bold text-sm">30 Minutes in Tongues</p>
+                <p className="text-violet-300/60 text-xs">Complete all 3 sessions today</p>
+              </div>
+              <div className="ml-auto">
+                {(() => {
+                  const done = (['morning','afternoon','evening'] as const).filter(s =>
+                    tonguesSessions.find(t => t.session === s && t.date === dateFilter && t.completed)
+                  ).length;
+                  return (
+                    <span className="text-xs font-bold text-violet-300 bg-violet-500/20 px-2 py-1 rounded-full border border-violet-500/30">
+                      {done}/3 done
+                    </span>
+                  );
+                })()}
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              {([
+                { key: 'morning' as const,   label: 'Morning',   emoji: '🌅', time: '6–9 AM' },
+                { key: 'afternoon' as const, label: 'Afternoon', emoji: '☀️', time: '12–2 PM' },
+                { key: 'evening' as const,   label: 'Evening',   emoji: '🌙', time: '6–9 PM' },
+              ]).map(s => {
+                const entry = tonguesSessions.find(t => t.session === s.key && t.date === dateFilter);
+                const done = entry?.completed || false;
+                return (
+                  <button
+                    key={s.key}
+                    onClick={() => toggleTongues(s.key, dateFilter)}
+                    className={`flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl border font-semibold transition-all ${
+                      done
+                        ? 'bg-violet-500/20 border-violet-500/50 text-violet-300'
+                        : 'bg-slate-800/50 border-slate-700/50 text-slate-400 hover:border-violet-500/30 hover:text-violet-300'
+                    }`}
+                  >
+                    <span className="text-xl">{s.emoji}</span>
+                    <span className="text-xs font-bold">{s.label}</span>
+                    <span className="text-[10px] text-slate-500">{s.time}</span>
+                    {done && <span className="text-[10px] font-bold text-violet-400 bg-violet-500/20 px-1.5 rounded-full">✓ Done</span>}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           {/* Hour grid */}
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
             {hourlyForToday.map(h => {
               const isCurrent = isToday && h.hour === currentHour;
               const isRunning = activeTimer?.hour === h.hour;
+              // Show the duration this hour was actually completed with, or the active duration if not yet done
+              const savedEntry = hourlyPlan.find(p => p.hour === h.hour && p.date === dateFilter);
+              const displayDuration = (h.completed && savedEntry) ? savedEntry.duration : activeDuration;
               return (
                 <div key={h.hour} className={`relative rounded-2xl border p-2.5 flex flex-col items-center gap-1.5 transition-all ${
                   h.completed ? 'bg-sky-500/15 border-sky-500/50' :
@@ -212,8 +264,8 @@ export default function PrayerSection() {
                     {fmt(h.hour)}
                   </span>
                   {/* Duration badge */}
-                  <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-slate-400">
-                    {activeDuration}m
+                  <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full border ${h.completed ? 'bg-sky-500/20 border-sky-500/40 text-sky-300' : 'bg-slate-800 border-slate-700 text-slate-400'}`}>
+                    {displayDuration}m
                   </span>
                   {/* Toggle + timer buttons */}
                   <div className="flex gap-1 w-full">

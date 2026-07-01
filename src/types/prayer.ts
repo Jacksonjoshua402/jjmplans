@@ -16,8 +16,15 @@ export interface HourlyPrayer {
   date: string;
 }
 
+export interface TonguesSession {
+  session: PrayerSession;
+  date: string;
+  completed: boolean;
+}
+
 export interface PrayerState {
   points: PrayerPoint[];
   hourlyPlan: HourlyPrayer[];
   activeDuration: 6 | 10;
+  tonguesSessions: TonguesSession[];
 }
