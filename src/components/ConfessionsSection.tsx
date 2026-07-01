@@ -244,54 +244,81 @@ export default function ConfessionsSection() {
         </div>
       )}
 
-      {/* Speaking Mode Overlay */}
+      {/* Speaking Mode Overlay — card style matching reference */}
       {speakingMode && currentSpeak && (
-        <div className="fixed inset-0 z-50 bg-[#0a0f1f] flex flex-col" onClick={() => setSpeakingMode(false)}>
-          {/* Header */}
-          <div className="flex items-center justify-between px-5 pt-5 pb-2" onClick={e => e.stopPropagation()}>
-            <p className="text-[10px] text-amber-400/70 font-bold tracking-[0.3em] uppercase">
-              CONFESSION {speakingIndex + 1} OF {speakList.length}
-            </p>
-            <button onClick={() => setSpeakingMode(false)} className="p-2 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-all border border-slate-700/50">
-              <X size={18} />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4" onClick={() => setSpeakingMode(false)}>
+          <div
+            className="relative w-full max-w-lg bg-[#0d1526] rounded-3xl shadow-2xl flex flex-col overflow-hidden"
+            style={{ maxHeight: '90vh', minHeight: '60vh' }}
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setSpeakingMode(false)}
+              className="absolute top-4 right-4 z-10 h-9 w-9 rounded-full bg-slate-800/80 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white transition-all"
+            >
+              <X size={16} />
             </button>
-          </div>
 
-          {/* Progress bar */}
-          <div className="h-0.5 bg-slate-800 mx-5 rounded-full overflow-hidden" onClick={e => e.stopPropagation()}>
-            <div className="h-full bg-gradient-to-r from-amber-500 to-orange-500 transition-all duration-500" style={{ width: `${((speakingIndex + 1) / speakList.length) * 100}%` }} />
-          </div>
+            {/* Top: icon + category badge */}
+            <div className="flex flex-col items-center pt-8 pb-4 px-6">
+              <div className="h-14 w-14 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-2xl mb-3 shadow-lg">
+                {CONFESSION_CATEGORIES[currentSpeak.category]?.emoji || '✨'}
+              </div>
+              <span className={`text-[11px] font-extrabold tracking-[0.2em] uppercase px-3 py-1 rounded-full border ${CONFESSION_CATEGORIES[currentSpeak.category]?.bg} ${CONFESSION_CATEGORIES[currentSpeak.category]?.text} ${CONFESSION_CATEGORIES[currentSpeak.category]?.border}`}>
+                {CONFESSION_CATEGORIES[currentSpeak.category]?.label || 'Confession'}
+              </span>
+            </div>
 
-          {/* Main text — scrollable, vertically centred */}
-          <div className="flex-1 overflow-y-auto flex items-center justify-center px-6 py-8" onClick={e => e.stopPropagation()}>
-            <div className="text-center max-w-2xl w-full">
+            {/* Scrollable text */}
+            <div className="flex-1 overflow-y-auto px-6 pb-4">
               <p
-                className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight italic"
+                className="text-2xl sm:text-3xl font-extrabold text-white leading-snug italic text-center"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
               >
-                {currentSpeak.text}
+                "{currentSpeak.text}"
               </p>
               {currentSpeak.scriptureRef && (
-                <p className="text-amber-400 text-sm font-semibold mt-6">— {currentSpeak.scriptureRef}</p>
+                <p className="text-amber-400 text-sm font-semibold mt-4 text-center">— {currentSpeak.scriptureRef}</p>
               )}
             </div>
-          </div>
 
-          {/* Navigation */}
-          <div className="px-5 pb-8 pt-4 flex items-center justify-center gap-4" onClick={e => e.stopPropagation()}>
-            <button
-              onClick={() => setSpeakingIndex(i => Math.max(0, i - 1))}
-              disabled={speakingIndex === 0}
-              className="flex-1 max-w-[140px] py-3.5 rounded-2xl bg-slate-800 text-white text-sm font-bold disabled:opacity-30 hover:bg-slate-700 transition-all"
-            >
-              ← Previous
-            </button>
-            <button
-              onClick={() => { if (speakingIndex < speakList.length - 1) setSpeakingIndex(i => i + 1); else setSpeakingMode(false); }}
-              className="flex-1 max-w-[180px] py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-bold shadow-lg shadow-amber-500/30 transition-all"
-            >
-              {speakingIndex < speakList.length - 1 ? 'Next →' : '✓ Done'}
-            </button>
+            {/* Bottom nav */}
+            <div className="px-6 pb-6 pt-2">
+              {/* Dot indicators */}
+              <div className="flex items-center justify-center gap-1.5 mb-4">
+                {speakList.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setSpeakingIndex(i)}
+                    className={`h-1.5 rounded-full transition-all ${i === speakingIndex ? 'w-6 bg-amber-400' : 'w-1.5 bg-slate-600 hover:bg-slate-500'}`}
+                  />
+                ))}
+              </div>
+
+              {/* Arrow nav */}
+              <div className="flex items-center justify-between gap-3">
+                <button
+                  onClick={() => setSpeakingIndex(i => Math.max(0, i - 1))}
+                  disabled={speakingIndex === 0}
+                  className="h-11 w-11 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 disabled:opacity-30 hover:bg-slate-700 transition-all"
+                >
+                  ‹
+                </button>
+                <span className="text-slate-400 text-sm font-bold tabular-nums">
+                  {speakingIndex + 1} / {speakList.length}
+                </span>
+                <button
+                  onClick={() => {
+                    if (speakingIndex < speakList.length - 1) setSpeakingIndex(i => i + 1);
+                    else setSpeakingMode(false);
+                  }}
+                  className="h-11 w-11 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 hover:bg-slate-700 transition-all"
+                >
+                  {speakingIndex < speakList.length - 1 ? '›' : '✓'}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
