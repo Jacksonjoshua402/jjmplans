@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Sparkles, ListChecks, BookOpen, Target as TargetIcon, Columns3, Wand2, Volume2, HardDrive, Library, Monitor, Zap } from 'lucide-react';
+import { Sparkles, ListChecks, BookOpen, Target as TargetIcon, Columns3, Wand2, Volume2, HardDrive, Library, Monitor, Zap, Banknote } from 'lucide-react';
 import Header from './components/Header';
 import ProgressBar from './components/ProgressBar';
 import SessionCard from './components/SessionCard';
@@ -12,23 +12,25 @@ import ConfessionsSection from './components/ConfessionsSection';
 import BooksSection from './components/BooksSection';
 import CoursesSection from './components/CoursesSection';
 import PrayerSection from './components/PrayerSection';
+import GivingSection from './components/GivingSection';
 import DataManager from './components/DataManager';
 import { useActivities } from './hooks/useActivities';
 import type { Activity, SessionType } from './types';
 import { SESSION_CONFIG, BIBLE_VERSES } from './types';
 
-type View = 'planner' | 'targets' | 'pillars' | 'confessions' | 'prophecies' | 'prayer' | 'messages' | 'library' | 'learning';
+type View = 'planner' | 'targets' | 'pillars' | 'confessions' | 'prophecies' | 'prayer' | 'messages' | 'library' | 'learning' | 'giving';
 
 const TABS: { key: View; label: string; mobileLabel: string; icon: typeof ListChecks; gradient?: string }[] = [
-  { key: 'planner', label: 'Day Plan', mobileLabel: 'Plan', icon: ListChecks },
-  { key: 'prayer', label: 'Prayer', mobileLabel: 'Pray', icon: Zap, gradient: 'from-blue-500 to-cyan-500' },
-  { key: 'targets', label: 'Targets', mobileLabel: 'Goals', icon: TargetIcon },
-  { key: 'pillars', label: 'Pillars', mobileLabel: 'Pillars', icon: Columns3 },
-  { key: 'confessions', label: 'Confessions', mobileLabel: 'Confess', icon: Volume2 },
+  { key: 'planner', label: 'Day Plan', mobileLabel: 'Plan', icon: ListChecks, gradient: 'from-amber-500 to-orange-500' },
+  { key: 'prayer', label: 'Prayer', mobileLabel: 'Pray', icon: Zap, gradient: 'from-sky-500 to-cyan-500' },
+  { key: 'targets', label: 'Targets', mobileLabel: 'Goals', icon: TargetIcon, gradient: 'from-rose-500 to-pink-500' },
+  { key: 'pillars', label: 'Pillars', mobileLabel: 'Pillars', icon: Columns3, gradient: 'from-teal-500 to-emerald-500' },
+  { key: 'confessions', label: 'Confessions', mobileLabel: 'Confess', icon: Volume2, gradient: 'from-orange-500 to-amber-500' },
   { key: 'prophecies', label: 'Prophecy', mobileLabel: 'Word', icon: Wand2, gradient: 'from-violet-500 to-fuchsia-500' },
-  { key: 'messages', label: 'Messages', mobileLabel: 'Notes', icon: BookOpen },
-  { key: 'library', label: 'Library', mobileLabel: 'Books', icon: Library },
-  { key: 'learning', label: 'Learning', mobileLabel: 'Study', icon: Monitor },
+  { key: 'messages', label: 'Messages', mobileLabel: 'Notes', icon: BookOpen, gradient: 'from-indigo-500 to-blue-500' },
+  { key: 'library', label: 'Library', mobileLabel: 'Books', icon: Library, gradient: 'from-emerald-500 to-teal-600' },
+  { key: 'learning', label: 'Learning', mobileLabel: 'Study', icon: Monitor, gradient: 'from-blue-500 to-indigo-600' },
+  { key: 'giving', label: 'Giving', mobileLabel: 'Give', icon: Banknote, gradient: 'from-yellow-500 to-amber-500' },
 ];
 
 export default function App() {
@@ -230,6 +232,8 @@ export default function App() {
         <BooksSection />
       ) : view === 'learning' ? (
         <CoursesSection />
+      ) : view === 'giving' ? (
+        <GivingSection />
       ) : (
         <MessagesSection />
       )}

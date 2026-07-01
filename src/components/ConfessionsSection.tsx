@@ -73,13 +73,8 @@ export default function ConfessionsSection() {
           <span className="text-xs font-bold tracking-[0.2em] text-amber-400 uppercase">Daily Confessions</span>
         </div>
         <h1
-          className="text-3xl md:text-5xl font-extrabold tracking-tight mb-2"
-          style={{
-            fontFamily: "'Montserrat', sans-serif",
-            background: 'linear-gradient(135deg, #fef3c7 0%, #f59e0b 50%, #d97706 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
+          className="text-3xl md:text-5xl font-extrabold tracking-tight mb-2 text-white"
+          style={{ fontFamily: "'Montserrat', 'Inter', sans-serif" }}
         >
           My Confessions
         </h1>
@@ -251,29 +246,52 @@ export default function ConfessionsSection() {
 
       {/* Speaking Mode Overlay */}
       {speakingMode && currentSpeak && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0a0f1f] p-6" onClick={() => setSpeakingMode(false)}>
-          <button onClick={() => setSpeakingMode(false)} className="absolute top-6 right-6 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-all border border-slate-700/50 z-10">
-            <X size={20} />
-          </button>
-          <div className="text-center max-w-2xl" onClick={(e) => e.stopPropagation()}>
-            <p className="text-[10px] text-amber-400/60 font-bold tracking-[0.3em] uppercase mb-6">
+        <div className="fixed inset-0 z-50 bg-[#0a0f1f] flex flex-col" onClick={() => setSpeakingMode(false)}>
+          {/* Header */}
+          <div className="flex items-center justify-between px-5 pt-5 pb-2" onClick={e => e.stopPropagation()}>
+            <p className="text-[10px] text-amber-400/70 font-bold tracking-[0.3em] uppercase">
               CONFESSION {speakingIndex + 1} OF {speakList.length}
             </p>
-            <p className="text-2xl sm:text-4xl md:text-5xl font-bold text-white leading-tight italic mb-8" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-              "{currentSpeak.text}"
-            </p>
-            {currentSpeak.scriptureRef && (
-              <p className="text-amber-400 text-sm font-semibold mb-10">— {currentSpeak.scriptureRef}</p>
-            )}
-            <div className="h-1 bg-slate-800 rounded-full max-w-xs mx-auto mb-8 overflow-hidden">
-              <div className="h-full bg-gradient-to-r from-amber-500 to-orange-500 transition-all duration-300" style={{ width: `${((speakingIndex + 1) / speakList.length) * 100}%` }} />
+            <button onClick={() => setSpeakingMode(false)} className="p-2 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white transition-all border border-slate-700/50">
+              <X size={18} />
+            </button>
+          </div>
+
+          {/* Progress bar */}
+          <div className="h-0.5 bg-slate-800 mx-5 rounded-full overflow-hidden" onClick={e => e.stopPropagation()}>
+            <div className="h-full bg-gradient-to-r from-amber-500 to-orange-500 transition-all duration-500" style={{ width: `${((speakingIndex + 1) / speakList.length) * 100}%` }} />
+          </div>
+
+          {/* Main text — scrollable, vertically centred */}
+          <div className="flex-1 overflow-y-auto flex items-center justify-center px-6 py-8" onClick={e => e.stopPropagation()}>
+            <div className="text-center max-w-2xl w-full">
+              <p
+                className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight italic"
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+              >
+                {currentSpeak.text}
+              </p>
+              {currentSpeak.scriptureRef && (
+                <p className="text-amber-400 text-sm font-semibold mt-6">— {currentSpeak.scriptureRef}</p>
+              )}
             </div>
-            <div className="flex items-center justify-center gap-4">
-              <button onClick={() => setSpeakingIndex(i => Math.max(0, i - 1))} disabled={speakingIndex === 0} className="px-6 py-3 rounded-xl bg-slate-800 text-white text-sm font-bold disabled:opacity-30 hover:bg-slate-700 transition-all">← Previous</button>
-              <button onClick={() => { if (speakingIndex < speakList.length - 1) setSpeakingIndex(i => i + 1); else setSpeakingMode(false); }} className="px-8 py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-bold hover:shadow-lg shadow-amber-500/30 transition-all">
-                {speakingIndex < speakList.length - 1 ? 'Next →' : '✓ Done'}
-              </button>
-            </div>
+          </div>
+
+          {/* Navigation */}
+          <div className="px-5 pb-8 pt-4 flex items-center justify-center gap-4" onClick={e => e.stopPropagation()}>
+            <button
+              onClick={() => setSpeakingIndex(i => Math.max(0, i - 1))}
+              disabled={speakingIndex === 0}
+              className="flex-1 max-w-[140px] py-3.5 rounded-2xl bg-slate-800 text-white text-sm font-bold disabled:opacity-30 hover:bg-slate-700 transition-all"
+            >
+              ← Previous
+            </button>
+            <button
+              onClick={() => { if (speakingIndex < speakList.length - 1) setSpeakingIndex(i => i + 1); else setSpeakingMode(false); }}
+              className="flex-1 max-w-[180px] py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-bold shadow-lg shadow-amber-500/30 transition-all"
+            >
+              {speakingIndex < speakList.length - 1 ? 'Next →' : '✓ Done'}
+            </button>
           </div>
         </div>
       )}

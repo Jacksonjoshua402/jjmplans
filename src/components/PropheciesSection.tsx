@@ -54,13 +54,8 @@ export default function PropheciesSection() {
           <span className="text-xs font-bold tracking-[0.2em] text-violet-400 uppercase">Prophetic Words</span>
         </div>
         <h1
-          className="text-3xl md:text-5xl font-extrabold tracking-tight mb-2"
-          style={{
-            fontFamily: "'Montserrat', sans-serif",
-            background: 'linear-gradient(135deg, #ddd6fe 0%, #a78bfa 50%, #7c3aed 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
+          className="text-3xl md:text-5xl font-extrabold tracking-tight mb-2 text-white"
+          style={{ fontFamily: "'Montserrat', 'Inter', sans-serif" }}
         >
           Prophecy & Rhema
         </h1>

@@ -57,13 +57,8 @@ export default function MessagesSection() {
           <span className="text-xs font-bold tracking-[0.2em] text-amber-400 uppercase">Sermon Archive</span>
         </div>
         <h1
-          className="text-4xl md:text-5xl font-extrabold mb-3 tracking-tight"
-          style={{
-            fontFamily: "'Inter', -apple-system, sans-serif",
-            background: 'linear-gradient(135deg, #f5e6a8 0%, #d4a84b 50%, #b8863a 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
+          className="text-4xl md:text-5xl font-extrabold mb-3 tracking-tight text-white"
+          style={{ fontFamily: "'Montserrat', 'Inter', sans-serif" }}
         >
           MESSAGE NOTES
         </h1>
