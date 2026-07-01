@@ -56,7 +56,7 @@ function TimerBanner({ hour, duration, onDone, onStop }: {
 
 export default function PrayerSection() {
   const {
-    points, hourlyPlan, activeDuration, tonguesSessions,
+    points, hourlyPlan, activeDuration, tonguesSessions = [],
     addPrayerPoint, togglePrayerPoint, deletePrayerPoint,
     toggleHourly, setDuration, toggleTongues, resetPrayer,
   } = usePrayer();
