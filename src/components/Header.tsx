@@ -1,4 +1,5 @@
-import { Plus, FileSpreadsheet, FileText, Trash2, LogOut } from 'lucide-react';
+import { useState } from 'react';
+import { Plus, FileSpreadsheet, FileText, Trash2, LogOut, Copy, Star } from 'lucide-react';
 import type { DayKey } from '../types';
 import { DAYS } from '../types';
 import { useAuth } from '../contexts/AuthContext';
@@ -10,6 +11,10 @@ interface HeaderProps {
   onExportExcel: () => void;
   onExportPdf: () => void;
   onClearDay: () => void;
+  onSaveAsDefault: () => number;
+  onDuplicateDay: (fromDay: DayKey, toDay: DayKey) => number;
+  onApplyDefault: (toDay: DayKey) => number;
+  hasDefault: () => boolean;
 }
 
 function getTodayKey(): DayKey {
@@ -24,9 +29,22 @@ export default function Header({
   onExportExcel,
   onExportPdf,
   onClearDay,
+  onSaveAsDefault,
+  onDuplicateDay,
+  onApplyDefault,
+  hasDefault,
 }: HeaderProps) {
   const { user, logout } = useAuth();
   const now = new Date();
+  const [showDuplicateMenu, setShowDuplicateMenu] = useState(false);
+  const [toast, setToast] = useState<string | null>(null);
+
+  const showToast = (msg: string) => {
+    setToast(msg);
+    setTimeout(() => setToast(null), 2500);
+  };
+
+  const ALL_DAYS: DayKey[] = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
   const todayKey = getTodayKey();
   const fullDate = now.toLocaleDateString('en-US', {
     weekday: 'long',
@@ -37,14 +55,6 @@ export default function Header({
 
   return (
     <header className="relative text-center mb-10">
-      {/* Top label */}
-      <div className="flex items-center justify-center gap-3 mb-4">
-        <span className="text-xs font-semibold tracking-[0.3em] text-amber-400/80">JJM 2026</span>
-        <span className="text-amber-400/60 text-xs">✦</span>
-        <span className="text-xs font-semibold tracking-[0.3em] text-amber-400/80">PERSONAL GROWTH PLAN</span>
-      </div>
-
-      {/* Title */}
       {/* Today's date */}
       <div className="flex items-center justify-center gap-3 mb-4">
         <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/60 border border-slate-700/50">
@@ -102,6 +112,60 @@ export default function Header({
         >
           <FileText size={14} /> Export PDF
         </button>
+        {/* Save as Default */}
+        <button
+          onClick={() => {
+            const count = onSaveAsDefault();
+            showToast(count > 0 ? `✓ ${count} activities saved as default template` : 'No activities to save');
+          }}
+          className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-600/80 hover:bg-blue-600 border border-blue-500/40 text-white text-sm font-semibold hover:scale-[1.02] active:scale-95 transition-all"
+          title="Save this day's activities as a reusable template"
+        >
+          <Star size={14} /> Save as Default
+        </button>
+        {/* Duplicate Day */}
+        <div className="relative">
+          <button
+            onClick={() => setShowDuplicateMenu(v => !v)}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-violet-600/80 hover:bg-violet-600 border border-violet-500/40 text-white text-sm font-semibold hover:scale-[1.02] active:scale-95 transition-all"
+          >
+            <Copy size={14} /> Duplicate Day
+          </button>
+          {showDuplicateMenu && (
+            <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 z-50 bg-slate-900 border border-slate-700 rounded-2xl p-3 shadow-2xl min-w-[220px]" onClick={e => e.stopPropagation()}>
+              <p className="text-xs text-slate-400 font-bold mb-2 text-center uppercase tracking-wider">Copy {selectedDay.toUpperCase()} to...</p>
+              <div className="grid grid-cols-2 gap-1.5 mb-3">
+                {ALL_DAYS.filter(d => d !== selectedDay).map(d => (
+                  <button key={d} onClick={() => {
+                    const count = onDuplicateDay(selectedDay, d);
+                    setShowDuplicateMenu(false);
+                    showToast(`✓ Copied ${count} activities to ${d.toUpperCase()}`);
+                  }} className="py-1.5 rounded-xl bg-slate-800 hover:bg-violet-600/30 border border-slate-700 hover:border-violet-500/50 text-white text-xs font-bold uppercase transition-all">
+                    {d}
+                  </button>
+                ))}
+              </div>
+              {hasDefault() && (
+                <>
+                  <div className="h-px bg-slate-700 mb-2" />
+                  <p className="text-xs text-slate-400 font-bold mb-1.5 text-center uppercase tracking-wider">Apply Default Template</p>
+                  <div className="grid grid-cols-2 gap-1.5">
+                    {ALL_DAYS.map(d => (
+                      <button key={d} onClick={() => {
+                        const count = onApplyDefault(d);
+                        setShowDuplicateMenu(false);
+                        showToast(`✓ Applied default to ${d.toUpperCase()} (${count} activities)`);
+                      }} className="py-1.5 rounded-xl bg-slate-800 hover:bg-blue-600/30 border border-slate-700 hover:border-blue-500/50 text-white text-xs font-bold uppercase transition-all">
+                        {d}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+              <button onClick={() => setShowDuplicateMenu(false)} className="w-full mt-2 text-xs text-slate-500 hover:text-slate-300 transition-colors">Cancel</button>
+            </div>
+          )}
+        </div>
         <button
           onClick={onClearDay}
           className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-rose-900/50 hover:bg-rose-900/70 border border-rose-700/50 text-rose-200 text-sm font-semibold hover:scale-[1.02] active:scale-95 transition-all"
@@ -109,6 +173,13 @@ export default function Header({
           <Trash2 size={14} /> Clear Day
         </button>
       </div>
+
+      {/* Toast notification */}
+      {toast && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-slate-800 border border-slate-600 text-white text-sm font-semibold px-5 py-3 rounded-full shadow-2xl animate-bounce">
+          {toast}
+        </div>
+      )}
 
       {/* Day tabs */}
       <div className="flex items-center justify-center gap-2 flex-wrap">

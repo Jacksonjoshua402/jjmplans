@@ -48,6 +48,10 @@ export default function App() {
     deleteActivity,
     addToSession,
     clearDay,
+    saveAsDefault,
+    duplicateDay,
+    applyDefault,
+    hasDefault,
     resetData,
   } = useActivities();
 
@@ -153,7 +157,7 @@ export default function App() {
           </div>
 
           {/* Tab bar */}
-          <div className="flex items-center gap-0.5 bg-slate-800/60 rounded-full p-1 border border-slate-700/50 overflow-x-auto max-w-full no-scrollbar w-full sm:w-auto" style={{ scrollbarWidth: 'none' }}>
+          <div className="flex items-center gap-0.5 bg-slate-800/60 rounded-full p-1 border border-slate-700/50 overflow-x-auto no-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
             {TABS.map(tab => {
               const Icon = tab.icon;
               const isActive = view === tab.key;
@@ -188,13 +192,8 @@ export default function App() {
               <span className="text-xs font-bold tracking-[0.2em] text-amber-400 uppercase">Daily Schedule</span>
             </div>
             <h1
-              className="text-6xl md:text-8xl font-extrabold tracking-tight leading-none mb-1"
-              style={{
-                fontFamily: "'Montserrat', 'Inter', sans-serif",
-                WebkitTextStroke: '2px rgba(251,191,36,0.4)',
-                color: '#ffffff',
-                textShadow: '0 0 40px rgba(251,191,36,0.15)',
-              }}
+              className="text-6xl md:text-8xl font-extrabold tracking-tight leading-none mb-1 text-white"
+              style={{ fontFamily: "'Montserrat', 'Inter', sans-serif" }}
             >
               MY DAY PLAN
             </h1>
@@ -207,6 +206,10 @@ export default function App() {
             onExportExcel={handleExportExcel}
             onExportPdf={handleExportPdf}
             onClearDay={handleClearDay}
+            onSaveAsDefault={() => saveAsDefault(selectedDay)}
+            onDuplicateDay={duplicateDay}
+            onApplyDefault={applyDefault}
+            hasDefault={hasDefault}
           />
           <ProgressBar percent={progressPercent} completed={completedCount} total={totalCount} />
           <div className="space-y-6">
