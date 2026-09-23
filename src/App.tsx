@@ -196,7 +196,7 @@ export default function App() {
               <span className="text-xs font-bold tracking-[0.2em] text-cyan-400 uppercase">Daily Schedule</span>
             </div>
             <h1
-              className="text-6xl md:text-8xl font-extrabold tracking-tight leading-none mb-1 text-white"
+              className="text-3xl md:text-5xl font-extrabold tracking-tight leading-none mb-2 text-white"
               style={{ fontFamily: "'Montserrat', 'Inter', sans-serif" }}
             >
               MY DAY PLAN
