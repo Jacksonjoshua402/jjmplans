@@ -46,14 +46,14 @@ export default function ActivityRow({ activity, onToggle, onUpdate, onEdit, onDe
   return (
     <div
       className={`group flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-3 px-3 sm:px-5 py-3.5 transition-all duration-200 border-b border-slate-100 last:border-b-0 ${
-        activity.completed ? 'bg-slate-50/50' : 'bg-white hover:bg-amber-50/30'
+        activity.completed ? 'bg-slate-50/50' : 'bg-white hover:bg-cyan-50/30'
       }`}
     >
       {/* Checkbox */}
       <button
         onClick={() => onToggle(activity.id)}
         className={`flex-shrink-0 transition-all duration-200 ${
-          activity.completed ? 'text-amber-500' : 'text-slate-300 hover:text-amber-500'
+          activity.completed ? 'text-cyan-500' : 'text-slate-300 hover:text-cyan-500'
         }`}
       >
         <CheckCircle2
@@ -78,7 +78,7 @@ export default function ActivityRow({ activity, onToggle, onUpdate, onEdit, onDe
               if (e.key === 'Enter') saveTitle();
               if (e.key === 'Escape') { setTitleValue(activity.title); setEditingTitle(false); }
             }}
-            className="w-full text-sm font-medium text-slate-800 bg-amber-50 border border-amber-300 rounded px-2 py-0.5 focus:outline-none focus:ring-2 focus:ring-amber-400"
+            className="w-full text-sm font-medium text-slate-800 bg-cyan-50 border border-cyan-300 rounded px-2 py-0.5 focus:outline-none focus:ring-2 focus:ring-cyan-400"
           />
         ) : (
           <div
@@ -100,7 +100,7 @@ export default function ActivityRow({ activity, onToggle, onUpdate, onEdit, onDe
               if (e.key === 'Enter') saveFreq();
               if (e.key === 'Escape') { setFreqValue(activity.frequency); setEditingFreq(false); }
             }}
-            className="text-[11px] text-slate-500 bg-amber-50 border border-amber-300 rounded px-1.5 py-0.5 focus:outline-none focus:ring-2 focus:ring-amber-400 mt-0.5"
+            className="text-[11px] text-slate-500 bg-cyan-50 border border-cyan-300 rounded px-1.5 py-0.5 focus:outline-none focus:ring-2 focus:ring-cyan-400 mt-0.5"
           />
         ) : (
           <div className="text-[11px] text-slate-500 font-medium tracking-wide mt-0.5">
@@ -123,21 +123,21 @@ export default function ActivityRow({ activity, onToggle, onUpdate, onEdit, onDe
         <div className="flex items-center gap-1 flex-shrink-0 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity">
           <button
             onClick={onEdit}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-blue-500 hover:bg-blue-50 transition-all"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-sky-500 hover:bg-sky-50 transition-all"
             title="Full Edit"
           >
             <Settings size={13} />
           </button>
           <button
             onClick={() => { setEditingTitle(true); setTitleValue(activity.title); }}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-amber-600 hover:bg-amber-50 transition-all"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-cyan-600 hover:bg-cyan-50 transition-all"
             title="Edit title"
           >
             <Pencil size={13} />
           </button>
         <button
           onClick={() => { setEditingFreq(true); setFreqValue(activity.frequency); }}
-          className="p-1.5 rounded-lg text-slate-400 hover:text-blue-600 hover:bg-blue-50 transition-all"
+          className="p-1.5 rounded-lg text-slate-400 hover:text-sky-600 hover:bg-sky-50 transition-all"
           title="Edit frequency"
         >
           <ClockEditIcon />

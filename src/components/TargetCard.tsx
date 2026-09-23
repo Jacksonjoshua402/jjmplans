@@ -15,7 +15,7 @@ export default function TargetCard({ target, onIncrement, onEdit, onDelete }: Ta
 
   return (
     <div
-      className={`group relative bg-gradient-to-br from-slate-800/60 to-slate-900/60 rounded-2xl border border-slate-700/50 p-5 hover:border-amber-500/30 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-amber-500/5`}
+      className={`group relative bg-gradient-to-br from-slate-800/60 to-slate-900/60 rounded-2xl border border-slate-700/50 p-5 hover:border-cyan-500/30 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/5`}
     >
       {/* Category strip */}
       <div className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl overflow-hidden">
@@ -32,7 +32,7 @@ export default function TargetCard({ target, onIncrement, onEdit, onDelete }: Ta
         <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
           <button
             onClick={() => onEdit(target)}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-amber-400 hover:bg-amber-500/10 transition-all"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all"
           >
             <Edit2 size={13} />
           </button>
@@ -46,7 +46,7 @@ export default function TargetCard({ target, onIncrement, onEdit, onDelete }: Ta
       </div>
 
       <h3
-        className={`text-base font-bold mb-1 leading-tight ${isDone ? 'text-emerald-300' : 'text-white'}`}
+        className={`text-base font-bold mb-1 leading-tight ${isDone ? 'text-sky-300' : 'text-white'}`}
       >
         {isDone && '✦ '}{target.title}
       </h3>
@@ -63,7 +63,7 @@ export default function TargetCard({ target, onIncrement, onEdit, onDelete }: Ta
           <span className="text-[10px] text-slate-500 font-bold tracking-wider uppercase">
             {target.priority === 'high' ? '🔥 High Priority' : target.priority === 'medium' ? '⭐ Medium' : '📌 Low'}
           </span>
-          <span className={`text-sm font-bold tabular-nums ${isDone ? 'text-emerald-300' : 'text-amber-300'}`}>
+          <span className={`text-sm font-bold tabular-nums ${isDone ? 'text-sky-300' : 'text-cyan-300'}`}>
             {target.progress}%
           </span>
         </div>
@@ -103,8 +103,8 @@ export default function TargetCard({ target, onIncrement, onEdit, onDelete }: Ta
           onClick={() => onIncrement(target.id, target.progress >= 100 ? -100 : (100 - target.progress))}
           className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
             isDone
-              ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/30'
-              : 'bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:bg-amber-500/30'
+              ? 'bg-sky-500/20 text-sky-300 border border-sky-500/30 hover:bg-sky-500/30'
+              : 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/30'
           }`}
         >
           {isDone ? 'Reset' : 'Mark Complete'}

@@ -58,7 +58,7 @@ export default function Header({
       {/* Today's date */}
       <div className="flex items-center justify-center gap-3 mb-4">
         <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/60 border border-slate-700/50">
-          <div className="h-7 w-7 rounded-lg bg-amber-500 flex items-center justify-center text-white font-bold text-sm">
+          <div className="h-7 w-7 rounded-lg bg-cyan-500 flex items-center justify-center text-white font-bold text-sm">
             {now.getDate()}
           </div>
           <span className="text-sm text-slate-200 font-medium">{fullDate}</span>
@@ -81,28 +81,28 @@ export default function Header({
 
       {/* Bible verse */}
       <div className="max-w-2xl mx-auto mb-8">
-        <p className="text-amber-100/80 text-sm md:text-base italic leading-relaxed">
-          <span className="text-amber-300/60">"</span>
+        <p className="text-cyan-100/80 text-sm md:text-base italic leading-relaxed">
+          <span className="text-cyan-300/60">"</span>
           Commit your works to the LORD, and your plans will be established.
-          <span className="text-amber-300/60">"</span>
-          <span className="text-amber-400 font-semibold ml-2 block sm:inline mt-2 sm:mt-0">— Proverbs 16:3</span>
+          <span className="text-cyan-300/60">"</span>
+          <span className="text-cyan-400 font-semibold ml-2 block sm:inline mt-2 sm:mt-0">— Proverbs 16:3</span>
         </p>
       </div>
 
       {/* Divider */}
-      <div className="max-w-3xl mx-auto mb-8 h-px bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
+      <div className="max-w-3xl mx-auto mb-8 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
 
       {/* Action buttons */}
       <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
         <button
           onClick={onAddActivity}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:scale-[1.02] active:scale-95 transition-all"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-sky-500 text-white text-sm font-semibold shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-95 transition-all"
         >
           <Plus size={16} /> Add Activity
         </button>
         <button
           onClick={onExportExcel}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-600/90 hover:bg-emerald-600 text-white text-sm font-semibold shadow-lg shadow-emerald-600/20 hover:scale-[1.02] active:scale-95 transition-all"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-sky-600/90 hover:bg-sky-600 text-white text-sm font-semibold shadow-lg shadow-sky-600/20 hover:scale-[1.02] active:scale-95 transition-all"
         >
           <FileSpreadsheet size={14} /> Export Excel
         </button>
@@ -118,7 +118,7 @@ export default function Header({
             const count = onSaveAsDefault();
             showToast(count > 0 ? `✓ ${count} activities saved as default template` : 'No activities to save');
           }}
-          className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-600/80 hover:bg-blue-600 border border-blue-500/40 text-white text-sm font-semibold hover:scale-[1.02] active:scale-95 transition-all"
+          className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-sky-600/80 hover:bg-sky-600 border border-sky-500/40 text-white text-sm font-semibold hover:scale-[1.02] active:scale-95 transition-all"
           title="Save this day's activities as a reusable template"
         >
           <Star size={14} /> Save as Default
@@ -127,7 +127,7 @@ export default function Header({
         <div className="relative">
           <button
             onClick={() => setShowDuplicateMenu(v => !v)}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-violet-600/80 hover:bg-violet-600 border border-violet-500/40 text-white text-sm font-semibold hover:scale-[1.02] active:scale-95 transition-all"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-cyan-600/80 hover:bg-cyan-600 border border-cyan-500/40 text-white text-sm font-semibold hover:scale-[1.02] active:scale-95 transition-all"
           >
             <Copy size={14} /> Duplicate Day
           </button>
@@ -140,7 +140,7 @@ export default function Header({
                     const count = onDuplicateDay(selectedDay, d);
                     setShowDuplicateMenu(false);
                     showToast(`✓ Copied ${count} activities to ${d.toUpperCase()}`);
-                  }} className="py-1.5 rounded-xl bg-slate-800 hover:bg-violet-600/30 border border-slate-700 hover:border-violet-500/50 text-white text-xs font-bold uppercase transition-all">
+                  }} className="py-1.5 rounded-xl bg-slate-800 hover:bg-cyan-600/30 border border-slate-700 hover:border-cyan-500/50 text-white text-xs font-bold uppercase transition-all">
                     {d}
                   </button>
                 ))}
@@ -155,7 +155,7 @@ export default function Header({
                         const count = onApplyDefault(d);
                         setShowDuplicateMenu(false);
                         showToast(`✓ Applied default to ${d.toUpperCase()} (${count} activities)`);
-                      }} className="py-1.5 rounded-xl bg-slate-800 hover:bg-blue-600/30 border border-slate-700 hover:border-blue-500/50 text-white text-xs font-bold uppercase transition-all">
+                      }} className="py-1.5 rounded-xl bg-slate-800 hover:bg-sky-600/30 border border-slate-700 hover:border-sky-500/50 text-white text-xs font-bold uppercase transition-all">
                         {d}
                       </button>
                     ))}
@@ -192,18 +192,18 @@ export default function Header({
               onClick={() => onSelectDay(key)}
               className={`relative px-5 py-2 rounded-full text-sm font-bold tracking-wider transition-all duration-300 ${
                 isActive
-                  ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg shadow-amber-500/30 scale-105'
+                  ? 'bg-gradient-to-r from-cyan-500 to-sky-500 text-white shadow-lg shadow-cyan-500/30 scale-105'
                   : isToday
-                  ? 'bg-amber-500/15 text-amber-300 border border-amber-500/50'
-                  : 'bg-slate-800/50 text-amber-200/70 hover:bg-slate-700/50 hover:text-amber-200 border border-slate-700/50'
+                  ? 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/50'
+                  : 'bg-slate-800/50 text-cyan-200/70 hover:bg-slate-700/50 hover:text-cyan-200 border border-slate-700/50'
               }`}
             >
               {label}
               {isToday && !isActive && (
-                <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-amber-400" />
+                <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-cyan-400" />
               )}
               {isActive && (
-                <span className="absolute -top-1 -right-1 h-2.5 w-2.5 rounded-full bg-amber-300 shadow-[0_0_8px_rgba(251,191,36,0.8)]" />
+                <span className="absolute -top-1 -right-1 h-2.5 w-2.5 rounded-full bg-cyan-300 shadow-[0_0_8px_rgba(34,211,238,0.8)]" />
               )}
             </button>
           );

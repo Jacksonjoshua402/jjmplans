@@ -79,7 +79,7 @@ ${message.notes}
         <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
           <button
             onClick={() => onEdit(message)}
-            className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-amber-500/90 hover:bg-amber-500 text-white text-xs font-semibold transition-all shadow-lg shadow-amber-500/30"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-full bg-cyan-500/90 hover:bg-cyan-500 text-white text-xs font-semibold transition-all shadow-lg shadow-cyan-500/30"
             title="Edit message"
           >
             <Pencil size={14} /> Edit
@@ -103,15 +103,15 @@ ${message.notes}
             <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0a1528] via-[#0a1528]/80 to-transparent pointer-events-none" />
           </div>
         ) : (
-          <div className="w-full h-40 flex items-center justify-center bg-gradient-to-br from-amber-500/10 to-orange-500/10 border-b border-slate-700/30">
-            <BookOpen size={48} className="text-amber-400/40" />
+          <div className="w-full h-40 flex items-center justify-center bg-gradient-to-br from-cyan-500/10 to-sky-500/10 border-b border-slate-700/30">
+            <BookOpen size={48} className="text-cyan-400/40" />
           </div>
         )}
 
         {/* Title & series */}
         <div className="px-6 pt-4 pb-3 -mt-8 relative z-10">
           {message.series && (
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/90 text-white text-[10px] font-bold tracking-[0.15em] uppercase mb-3 shadow-lg shadow-amber-500/30">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/90 text-white text-[10px] font-bold tracking-[0.15em] uppercase mb-3 shadow-lg shadow-cyan-500/30">
               {message.series}
             </div>
           )}
@@ -126,24 +126,24 @@ ${message.notes}
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-slate-300 pt-2">
             {message.speaker && (
               <div className="flex items-center gap-2">
-                <div className="h-8 w-8 rounded-full bg-gradient-to-br from-amber-500/20 to-orange-500/20 border border-amber-500/30 flex items-center justify-center">
-                  <User size={14} className="text-amber-400" />
+                <div className="h-8 w-8 rounded-full bg-gradient-to-br from-cyan-500/20 to-sky-500/20 border border-cyan-500/30 flex items-center justify-center">
+                  <User size={14} className="text-cyan-400" />
                 </div>
                 <span className="font-medium text-white">{message.speaker}</span>
               </div>
             )}
             <div className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded-full bg-gradient-to-br from-blue-500/20 to-indigo-500/20 border border-blue-500/30 flex items-center justify-center">
-                <CalendarDays size={14} className="text-blue-400" />
+              <div className="h-8 w-8 rounded-full bg-gradient-to-br from-sky-500/20 to-cyan-500/20 border border-sky-500/30 flex items-center justify-center">
+                <CalendarDays size={14} className="text-sky-400" />
               </div>
               <span className="font-medium text-white">{formatDate(message.date)}</span>
             </div>
             {message.scriptureRef && (
               <div className="flex items-center gap-2">
-                <div className="h-8 w-8 rounded-full bg-gradient-to-br from-violet-500/20 to-fuchsia-500/20 border border-violet-500/30 flex items-center justify-center">
-                  <BookOpen size={14} className="text-violet-400" />
+                <div className="h-8 w-8 rounded-full bg-gradient-to-br from-cyan-500/20 to-sky-500/20 border border-cyan-500/30 flex items-center justify-center">
+                  <BookOpen size={14} className="text-cyan-400" />
                 </div>
-                <span className="font-medium text-amber-300">{message.scriptureRef}</span>
+                <span className="font-medium text-cyan-300">{message.scriptureRef}</span>
               </div>
             )}
           </div>
@@ -155,7 +155,7 @@ ${message.notes}
               {message.tags.map(tag => (
                 <span
                   key={tag}
-                  className="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-300 text-xs font-medium border border-amber-500/20"
+                  className="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-300 text-xs font-medium border border-cyan-500/20"
                 >
                   {tag}
                 </span>
@@ -166,7 +166,7 @@ ${message.notes}
 
         {/* Divider */}
         <div className="px-6 pb-6">
-          <div className="h-px bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
+          <div className="h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
         </div>
 
         {/* Main content */}
@@ -174,13 +174,13 @@ ${message.notes}
           {/* Key Points */}
           {message.keyPoints.length > 0 && (
             <div>
-              <h3 className="text-xs font-bold tracking-[0.15em] text-amber-400 uppercase mb-3 flex items-center gap-2">
-                <span className="w-8 h-px bg-amber-500/50" /> Key Points
+              <h3 className="text-xs font-bold tracking-[0.15em] text-cyan-400 uppercase mb-3 flex items-center gap-2">
+                <span className="w-8 h-px bg-cyan-500/50" /> Key Points
               </h3>
               <div className="space-y-2">
                 {message.keyPoints.map((point, i) => (
                   <div key={i} className="flex gap-3 bg-slate-800/40 rounded-xl p-4 border border-slate-700/30">
-                    <span className="flex-shrink-0 h-7 w-7 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold flex items-center justify-center border border-amber-500/30">
+                    <span className="flex-shrink-0 h-7 w-7 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-bold flex items-center justify-center border border-cyan-500/30">
                       {i + 1}
                     </span>
                     <p className="text-sm text-slate-200 leading-relaxed pt-0.5">{point}</p>
@@ -193,8 +193,8 @@ ${message.notes}
           {/* Notes */}
           {message.notes && (
             <div>
-              <h3 className="text-xs font-bold tracking-[0.15em] text-amber-400 uppercase mb-3 flex items-center gap-2">
-                <span className="w-8 h-px bg-amber-500/50" /> Full Notes
+              <h3 className="text-xs font-bold tracking-[0.15em] text-cyan-400 uppercase mb-3 flex items-center gap-2">
+                <span className="w-8 h-px bg-cyan-500/50" /> Full Notes
               </h3>
               <div className="bg-slate-800/40 rounded-xl p-5 border border-slate-700/30 leading-relaxed space-y-1.5">
                 {renderNotes(message.notes)}
@@ -205,13 +205,13 @@ ${message.notes}
           {/* Prayer Points */}
           {message.prayerPoints.length > 0 && (
             <div>
-              <h3 className="text-xs font-bold tracking-[0.15em] text-amber-400 uppercase mb-3 flex items-center gap-2">
-                <span className="w-8 h-px bg-amber-500/50" /> Prayer Points
+              <h3 className="text-xs font-bold tracking-[0.15em] text-cyan-400 uppercase mb-3 flex items-center gap-2">
+                <span className="w-8 h-px bg-cyan-500/50" /> Prayer Points
               </h3>
               <div className="space-y-2">
                 {message.prayerPoints.map((point, i) => (
-                  <div key={i} className="flex gap-3 bg-gradient-to-r from-amber-500/5 to-transparent rounded-xl p-4 border-l-2 border-amber-500/50">
-                    <span className="flex-shrink-0 text-amber-400 text-lg">✦</span>
+                  <div key={i} className="flex gap-3 bg-gradient-to-r from-cyan-500/5 to-transparent rounded-xl p-4 border-l-2 border-cyan-500/50">
+                    <span className="flex-shrink-0 text-cyan-400 text-lg">✦</span>
                     <p className="text-sm text-slate-200 leading-relaxed italic">{point}</p>
                   </div>
                 ))}
@@ -222,15 +222,15 @@ ${message.notes}
           {/* Gallery */}
           {allMedia.length > 0 && (
             <div>
-              <h3 className="text-xs font-bold tracking-[0.15em] text-amber-400 uppercase mb-3 flex items-center gap-2">
-                <span className="w-8 h-px bg-amber-500/50" /> Photos & Videos ({allMedia.length})
+              <h3 className="text-xs font-bold tracking-[0.15em] text-cyan-400 uppercase mb-3 flex items-center gap-2">
+                <span className="w-8 h-px bg-cyan-500/50" /> Photos & Videos ({allMedia.length})
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
                 {allMedia.map((item, idx) => (
                   <button
                     key={item.id}
                     onClick={() => openMedia(idx)}
-                    className="relative aspect-square rounded-xl overflow-hidden bg-slate-800 group hover:ring-2 hover:ring-amber-500/50 transition-all shadow-md"
+                    className="relative aspect-square rounded-xl overflow-hidden bg-slate-800 group hover:ring-2 hover:ring-cyan-500/50 transition-all shadow-md"
                   >
                     {item.type === 'image' ? (
                       <img src={item.dataUrl} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
@@ -253,7 +253,7 @@ ${message.notes}
         <div className="sticky bottom-0 bg-gradient-to-t from-[#0a1528] via-[#0a1528]/95 to-[#0a1528]/80 backdrop-blur-sm border-t border-slate-700/50 px-6 py-4 flex flex-col sm:flex-row items-center sm:justify-between gap-3">
           <div className="flex items-center gap-3 text-xs text-slate-400">
             <span>Date preached:</span>
-            <span className="font-semibold text-amber-300">{formatDate(message.date)}</span>
+            <span className="font-semibold text-cyan-300">{formatDate(message.date)}</span>
           </div>
           <div className="flex items-center gap-2">
             <button
@@ -264,7 +264,7 @@ ${message.notes}
             </button>
             <button
               onClick={() => onEdit(message)}
-              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 text-xs font-semibold transition-all"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/40 text-cyan-300 text-xs font-semibold transition-all"
             >
               <Pencil size={14} /> Edit Message
             </button>

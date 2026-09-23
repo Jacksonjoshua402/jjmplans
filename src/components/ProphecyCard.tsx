@@ -20,10 +20,10 @@ export default function ProphecyCard({ prophecy, onEdit, onDelete }: ProphecyCar
   };
 
   return (
-    <div className="group relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 rounded-2xl border border-slate-700/50 p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-violet-500/30">
+    <div className="group relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 rounded-2xl border border-slate-700/50 p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-cyan-500/30">
       {/* Top strip */}
       <div className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl overflow-hidden">
-        <div className="w-full h-full bg-gradient-to-r from-violet-500 to-fuchsia-500" />
+        <div className="w-full h-full bg-gradient-to-r from-cyan-500 to-sky-500" />
       </div>
 
       {/* Header: type & status */}
@@ -47,7 +47,7 @@ export default function ProphecyCard({ prophecy, onEdit, onDelete }: ProphecyCar
       )}
 
       {/* Content - the prophecy itself */}
-      <div className="bg-gradient-to-r from-violet-500/5 to-transparent border-l-2 border-violet-500/40 pl-3 py-2 mb-3">
+      <div className="bg-gradient-to-r from-cyan-500/5 to-transparent border-l-2 border-cyan-500/40 pl-3 py-2 mb-3">
         <p className="text-sm text-slate-200 leading-relaxed italic line-clamp-4">
           "{prophecy.content}"
         </p>
@@ -57,16 +57,16 @@ export default function ProphecyCard({ prophecy, onEdit, onDelete }: ProphecyCar
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-slate-400 mb-2">
         {prophecy.date && (
           <span className="flex items-center gap-1">
-            <Calendar size={11} className="text-violet-400" /> {formatDate(prophecy.date)}
+            <Calendar size={11} className="text-cyan-400" /> {formatDate(prophecy.date)}
           </span>
         )}
         {prophecy.source && (
           <span className="flex items-center gap-1">
-            <User size={11} className="text-amber-400" /> {prophecy.source}
+            <User size={11} className="text-cyan-400" /> {prophecy.source}
           </span>
         )}
         {prophecy.scriptureRef && (
-          <span className="flex items-center gap-1 text-amber-400/80">
+          <span className="flex items-center gap-1 text-cyan-400/80">
             <BookOpen size={11} /> {prophecy.scriptureRef}
           </span>
         )}
@@ -91,7 +91,7 @@ export default function ProphecyCard({ prophecy, onEdit, onDelete }: ProphecyCar
       <div className="flex items-center justify-end gap-1 mt-3 opacity-0 group-hover:opacity-100 transition-opacity">
         <button
           onClick={() => onEdit(prophecy)}
-          className="p-1.5 rounded-lg text-slate-400 hover:text-violet-400 hover:bg-violet-500/10 transition-all"
+          className="p-1.5 rounded-lg text-slate-400 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all"
           title="Edit"
         >
           <Pencil size={13} />

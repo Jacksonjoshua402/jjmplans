@@ -64,16 +64,16 @@ export default function AuthScreen() {
     <div className="min-h-screen flex items-center justify-center px-4 bg-slate-950">
       {/* Ambient background glow, consistent with app theme */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-96 w-96 rounded-full bg-amber-500/10 blur-3xl" />
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl" />
       </div>
 
       <div className="relative w-full max-w-md">
         {/* Brand header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-3">
-            <span className="text-xs font-semibold tracking-[0.3em] text-amber-400/80">JJM 2026</span>
-            <span className="text-amber-400/60 text-xs">✦</span>
-            <span className="text-xs font-semibold tracking-[0.3em] text-amber-400/80">PERSONAL GROWTH PLAN</span>
+            <span className="text-xs font-semibold tracking-[0.3em] text-cyan-400/80">JJM 2026</span>
+            <span className="text-cyan-400/60 text-xs">✦</span>
+            <span className="text-xs font-semibold tracking-[0.3em] text-cyan-400/80">PERSONAL GROWTH PLAN</span>
           </div>
           <h1
             className="text-3xl md:text-4xl font-bold text-white tracking-tight"
@@ -95,7 +95,7 @@ export default function AuthScreen() {
               onClick={() => switchMode('login')}
               className={`flex-1 py-2 rounded-full text-sm font-semibold transition-all ${
                 mode === 'login'
-                  ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg shadow-amber-500/20'
+                  ? 'bg-gradient-to-r from-cyan-500 to-sky-500 text-white shadow-lg shadow-cyan-500/20'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -106,7 +106,7 @@ export default function AuthScreen() {
               onClick={() => switchMode('signup')}
               className={`flex-1 py-2 rounded-full text-sm font-semibold transition-all ${
                 mode === 'signup'
-                  ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg shadow-amber-500/20'
+                  ? 'bg-gradient-to-r from-cyan-500 to-sky-500 text-white shadow-lg shadow-cyan-500/20'
                   : 'text-slate-400 hover:text-slate-200'
               }`}
             >
@@ -125,7 +125,7 @@ export default function AuthScreen() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-800/70 border border-slate-700/50 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 transition-all"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-800/70 border border-slate-700/50 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
                 />
               </div>
             </div>
@@ -141,7 +141,7 @@ export default function AuthScreen() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-800/70 border border-slate-700/50 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 transition-all"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-800/70 border border-slate-700/50 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
                 />
               </div>
             </div>
@@ -158,7 +158,7 @@ export default function AuthScreen() {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="••••••••"
-                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-800/70 border border-slate-700/50 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/50 transition-all"
+                    className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-800/70 border border-slate-700/50 text-white text-sm placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
                   />
                 </div>
               </div>
@@ -173,7 +173,7 @@ export default function AuthScreen() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:scale-[1.01] active:scale-95 transition-all disabled:opacity-60 disabled:hover:scale-100"
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-500 text-white text-sm font-semibold shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-[1.01] active:scale-95 transition-all disabled:opacity-60 disabled:hover:scale-100"
             >
               {submitting ? (
                 <Loader2 size={16} className="animate-spin" />
@@ -205,14 +205,14 @@ export default function AuthScreen() {
           {mode === 'login' ? (
             <>
               Don't have an account?{' '}
-              <button onClick={() => switchMode('signup')} className="text-amber-400 hover:text-amber-300 font-medium">
+              <button onClick={() => switchMode('signup')} className="text-cyan-400 hover:text-cyan-300 font-medium">
                 Sign up
               </button>
             </>
           ) : (
             <>
               Already have an account?{' '}
-              <button onClick={() => switchMode('login')} className="text-amber-400 hover:text-amber-300 font-medium">
+              <button onClick={() => switchMode('login')} className="text-cyan-400 hover:text-cyan-300 font-medium">
                 Log in
               </button>
             </>

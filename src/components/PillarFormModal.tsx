@@ -42,11 +42,11 @@ export default function PillarFormModal({ initial, onSubmit, onClose }: PillarFo
         <form onSubmit={handleSubmit} className="p-6 space-y-5">
           {/* Header */}
           <div className="flex items-center gap-3 pb-4 border-b border-slate-700/50">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-xl shadow-lg shadow-amber-500/20">
+            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-cyan-500 to-sky-600 flex items-center justify-center text-xl shadow-lg shadow-cyan-500/20">
               {initial?.emoji || '🔑'}
             </div>
             <div>
-              <p className="text-[10px] text-amber-400/70 font-bold tracking-[0.2em] uppercase">
+              <p className="text-[10px] text-cyan-400/70 font-bold tracking-[0.2em] uppercase">
                 Pillar {initial?.number}
               </p>
               <h3 className="text-lg font-bold text-white">{initial?.title}</h3>
@@ -63,14 +63,14 @@ export default function PillarFormModal({ initial, onSubmit, onClose }: PillarFo
               onChange={(e) => setDescription(e.target.value)}
               rows={3}
               placeholder="What does this pillar mean to you? What is your vision for it?"
-              className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/40 transition-all text-sm resize-none"
+              className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all text-sm resize-none"
             />
           </div>
 
           {/* Key Verses */}
           <div>
             <label className="block text-xs font-bold tracking-[0.15em] text-slate-400 uppercase mb-2 flex items-center gap-1.5">
-              <BookOpen size={12} className="text-amber-400/60" /> Key Verses
+              <BookOpen size={12} className="text-cyan-400/60" /> Key Verses
             </label>
             <div className="space-y-2">
               {keyVerses.map((verse, i) => (
@@ -84,7 +84,7 @@ export default function PillarFormModal({ initial, onSubmit, onClose }: PillarFo
                       setKeyVerses(newVerses);
                     }}
                     placeholder="e.g. John 3:16"
-                    className="flex-1 px-3 py-2.5 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-amber-500/40 transition-all text-sm"
+                    className="flex-1 px-3 py-2.5 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-500/40 transition-all text-sm"
                   />
                   {keyVerses.length > 1 && (
                     <button
@@ -100,7 +100,7 @@ export default function PillarFormModal({ initial, onSubmit, onClose }: PillarFo
               <button
                 type="button"
                 onClick={() => setKeyVerses([...keyVerses, ''])}
-                className="text-xs text-amber-400 hover:text-amber-300 font-semibold flex items-center gap-1"
+                className="text-xs text-cyan-400 hover:text-cyan-300 font-semibold flex items-center gap-1"
               >
                 <Plus size={12} /> Add Verse
               </button>
@@ -117,14 +117,14 @@ export default function PillarFormModal({ initial, onSubmit, onClose }: PillarFo
               onChange={(e) => setNotes(e.target.value)}
               rows={5}
               placeholder="Write your convictions, revelations, and insights about this pillar..."
-              className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/40 transition-all text-sm resize-none"
+              className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all text-sm resize-none"
             />
           </div>
 
           {/* Submit */}
           <button
             type="submit"
-            className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-sm tracking-wider shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-[1.01] active:scale-95 transition-all"
+            className="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-500 text-white font-bold text-sm tracking-wider shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.01] active:scale-95 transition-all"
           >
             Save Pillar Details
           </button>

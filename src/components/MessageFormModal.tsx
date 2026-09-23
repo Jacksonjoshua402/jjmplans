@@ -94,8 +94,8 @@ export default function MessageFormModal({ initial, onSubmit, onClose }: Message
             onClick={() => coverRef.current?.click()}
             className={`relative cursor-pointer rounded-2xl overflow-hidden border-2 border-dashed transition-all ${
               coverImage
-                ? 'border-amber-500/40'
-                : 'border-slate-600/50 hover:border-amber-500/50 bg-slate-800/30'
+                ? 'border-cyan-500/40'
+                : 'border-slate-600/50 hover:border-cyan-500/50 bg-slate-800/30'
             }`}
           >
             {coverImage ? (
@@ -145,7 +145,7 @@ export default function MessageFormModal({ initial, onSubmit, onClose }: Message
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Enter message title"
                 autoFocus
-                className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500/40 transition-all text-sm"
+                className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:border-cyan-500/40 transition-all text-sm"
               />
             </div>
             <div>
@@ -157,7 +157,7 @@ export default function MessageFormModal({ initial, onSubmit, onClose }: Message
                 value={speaker}
                 onChange={(e) => setSpeaker(e.target.value)}
                 placeholder="Enter preacher name"
-                className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500/40 transition-all text-sm"
+                className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:border-cyan-500/40 transition-all text-sm"
               />
             </div>
           </div>
@@ -171,7 +171,7 @@ export default function MessageFormModal({ initial, onSubmit, onClose }: Message
               type="date"
               value={date}
               onChange={(e) => setDate(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500/40 transition-all text-sm"
+              className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:border-cyan-500/40 transition-all text-sm"
             />
             <p className="text-xs text-slate-500 mt-1.5 flex items-center gap-1.5">
               <Calendar size={12} /> {formattedDate}
@@ -200,7 +200,7 @@ export default function MessageFormModal({ initial, onSubmit, onClose }: Message
             </label>
             <div
               onClick={() => galleryRef.current?.click()}
-              className="cursor-pointer rounded-xl border-2 border-dashed border-slate-600/50 hover:border-amber-500/50 transition-all p-6 flex items-center gap-4 bg-slate-800/30"
+              className="cursor-pointer rounded-xl border-2 border-dashed border-slate-600/50 hover:border-cyan-500/50 transition-all p-6 flex items-center gap-4 bg-slate-800/30"
             >
               <div className="h-12 w-12 rounded-xl bg-slate-700/40 flex items-center justify-center">
                 <ImageIcon size={22} className="text-slate-400" />
@@ -211,8 +211,8 @@ export default function MessageFormModal({ initial, onSubmit, onClose }: Message
                 </p>
                 <p className="text-xs text-slate-500 mt-0.5">Supports JPG, PNG, MP4 — multiple files</p>
               </div>
-              <div className="h-10 w-10 rounded-full bg-amber-500/20 flex items-center justify-center">
-                <Plus size={18} className="text-amber-400" />
+              <div className="h-10 w-10 rounded-full bg-cyan-500/20 flex items-center justify-center">
+                <Plus size={18} className="text-cyan-400" />
               </div>
             </div>
             <input
@@ -251,7 +251,7 @@ export default function MessageFormModal({ initial, onSubmit, onClose }: Message
           <div className="pt-2">
             <button
               type="submit"
-              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-sm tracking-wider shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-[1.01] active:scale-95 transition-all"
+              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-500 text-white font-bold text-sm tracking-wider shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.01] active:scale-95 transition-all"
             >
               {initial ? 'Save Changes' : 'Save Message'}
             </button>

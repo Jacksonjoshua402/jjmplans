@@ -46,8 +46,8 @@ export default function WhatIsCard({ entry, onEdit, onDelete }: WhatIsCardProps)
 
       {/* Scripture refs */}
       {entry.scriptureRefs && (
-        <div className="flex items-start gap-1.5 mb-3 text-sm text-amber-300/90 font-semibold">
-          <BookOpen size={13} className="mt-0.5 shrink-0 text-amber-400" />
+        <div className="flex items-start gap-1.5 mb-3 text-sm text-cyan-300/90 font-semibold">
+          <BookOpen size={13} className="mt-0.5 shrink-0 text-cyan-400" />
           <span className="whitespace-pre-line leading-snug">{entry.scriptureRefs}</span>
         </div>
       )}
@@ -80,7 +80,7 @@ export default function WhatIsCard({ entry, onEdit, onDelete }: WhatIsCardProps)
           )}
           {entry.source && (
             <span className="flex items-center gap-1">
-              <User size={11} className="text-amber-400" /> {entry.source}
+              <User size={11} className="text-cyan-400" /> {entry.source}
             </span>
           )}
         </div>

@@ -8,7 +8,7 @@ export default function ProgressBar({ percent, completed, total }: ProgressBarPr
   return (
     <div className="bg-slate-900/60 backdrop-blur-sm border border-slate-700/50 rounded-2xl px-6 py-4 mb-8">
       <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-        <span className="text-xs sm:text-sm font-bold tracking-[0.2em] text-amber-300/90 uppercase whitespace-nowrap">
+        <span className="text-xs sm:text-sm font-bold tracking-[0.2em] text-cyan-300/90 uppercase whitespace-nowrap">
           Today's Progress
         </span>
         <div className="flex w-full items-center gap-4">
@@ -17,7 +17,7 @@ export default function ProgressBar({ percent, completed, total }: ProgressBarPr
               className="absolute inset-y-0 left-0 rounded-full transition-all duration-700 ease-out relative overflow-hidden"
               style={{
                 width: `${percent}%`,
-                background: 'linear-gradient(90deg, #d4a84b 0%, #f5e6a8 50%, #d4a84b 100%)',
+                background: 'linear-gradient(90deg, #22d3ee 0%, #a5f3fc 50%, #22d3ee 100%)',
                 backgroundSize: '200% 100%',
                 animation: 'shimmer 3s linear infinite',
               }}
@@ -35,7 +35,7 @@ export default function ProgressBar({ percent, completed, total }: ProgressBarPr
             className="text-xl font-bold min-w-[50px] text-right tabular-nums"
             style={{
               fontFamily: "'Playfair Display', Georgia, serif",
-              color: percent === 100 ? '#f5e6a8' : '#d4a84b',
+              color: percent === 100 ? '#a5f3fc' : '#22d3ee',
             }}
           >
             {percent}%

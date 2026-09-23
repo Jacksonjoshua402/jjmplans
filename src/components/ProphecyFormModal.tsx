@@ -68,11 +68,11 @@ export default function ProphecyFormModal({ initial, onSubmit, onClose }: Prophe
         <form onSubmit={handleSubmit} className="p-6 space-y-5">
           {/* Header */}
           <div className="flex items-center gap-3 pb-4 border-b border-slate-700/50">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-600 flex items-center justify-center text-xl shadow-lg shadow-violet-500/20">
+            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-cyan-500 to-sky-600 flex items-center justify-center text-xl shadow-lg shadow-cyan-500/20">
               🔮
             </div>
             <div>
-              <p className="text-[10px] text-violet-400/70 font-bold tracking-[0.2em] uppercase">PROPHECY & RHEMA</p>
+              <p className="text-[10px] text-cyan-400/70 font-bold tracking-[0.2em] uppercase">PROPHECY & RHEMA</p>
               <h3 className="text-lg font-bold text-white">{initial ? 'Edit Prophecy' : 'New Prophecy'}</h3>
             </div>
           </div>
@@ -106,7 +106,7 @@ export default function ProphecyFormModal({ initial, onSubmit, onClose }: Prophe
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="A brief title for this prophecy"
-              className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500/40 transition-all text-sm"
+              className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all text-sm"
             />
           </div>
 
@@ -121,7 +121,7 @@ export default function ProphecyFormModal({ initial, onSubmit, onClose }: Prophe
               rows={5}
               autoFocus
               placeholder="Write down the exact prophecy or word you received..."
-              className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500/40 transition-all text-sm resize-none"
+              className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all text-sm resize-none"
             />
           </div>
 
@@ -133,7 +133,7 @@ export default function ProphecyFormModal({ initial, onSubmit, onClose }: Prophe
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white focus:outline-none focus:ring-2 focus:ring-violet-500/40 transition-all text-sm"
+                className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all text-sm"
               />
               {formattedDate && (
                 <p className="text-xs text-slate-500 mt-1.5 flex items-center gap-1.5">
@@ -148,7 +148,7 @@ export default function ProphecyFormModal({ initial, onSubmit, onClose }: Prophe
                 value={source}
                 onChange={(e) => setSource(e.target.value)}
                 placeholder="Who gave the prophecy?"
-                className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500/40 transition-all text-sm"
+                className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all text-sm"
               />
             </div>
           </div>
@@ -162,7 +162,7 @@ export default function ProphecyFormModal({ initial, onSubmit, onClose }: Prophe
                 value={scriptureRef}
                 onChange={(e) => setScriptureRef(e.target.value)}
                 placeholder="e.g. Jeremiah 29:11"
-                className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500/40 transition-all text-sm"
+                className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all text-sm"
               />
             </div>
             <div>
@@ -194,7 +194,7 @@ export default function ProphecyFormModal({ initial, onSubmit, onClose }: Prophe
               value={tags}
               onChange={(e) => setTags(e.target.value)}
               placeholder="e.g. healing, breakthrough, family"
-              className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500/40 transition-all text-sm"
+              className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all text-sm"
             />
           </div>
 
@@ -206,14 +206,14 @@ export default function ProphecyFormModal({ initial, onSubmit, onClose }: Prophe
               onChange={(e) => setNotes(e.target.value)}
               rows={3}
               placeholder="Your insights, fulfillment progress, observations..."
-              className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500/40 transition-all text-sm resize-none"
+              className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all text-sm resize-none"
             />
           </div>
 
           {/* Submit */}
           <button
             type="submit"
-            className="w-full py-3.5 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-bold text-sm tracking-wider shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:scale-[1.01] active:scale-95 transition-all"
+            className="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-500 text-white font-bold text-sm tracking-wider shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.01] active:scale-95 transition-all"
           >
             {initial ? 'Save Changes' : 'Save Prophecy'}
           </button>

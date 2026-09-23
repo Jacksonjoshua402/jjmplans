@@ -58,7 +58,7 @@ export default function NotesEditor({
           onClick={() => wrapSelection('==')}
           title="Highlight (Yellow)"
           icon={<Highlighter size={13} />}
-          accent="text-yellow-400 hover:bg-yellow-400/10"
+          accent="text-cyan-400 hover:bg-cyan-400/10"
         />
         <div className="w-px h-5 bg-slate-700 mx-1" />
         <ToolbarButton
@@ -100,7 +100,7 @@ export default function NotesEditor({
               onClick={onTogglePreview}
               className={`flex items-center gap-1 px-2 py-1 rounded text-[11px] font-semibold transition-all ${
                 showPreview
-                  ? 'bg-amber-500/20 text-amber-300'
+                  ? 'bg-cyan-500/20 text-cyan-300'
                   : 'text-slate-400 hover:bg-slate-700/60 hover:text-slate-200'
               }`}
             >
@@ -110,7 +110,7 @@ export default function NotesEditor({
           </>
         )}
         <span className="text-[10px] text-slate-500 ml-auto px-2 hidden sm:inline">
-          Tip: highlight with <code className="text-yellow-400">==text==</code>
+          Tip: highlight with <code className="text-cyan-400">==text==</code>
         </span>
       </div>
 

@@ -47,11 +47,11 @@ export default function TargetFormModal({ initial, onSubmit, onClose, modalTitle
     <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-0 sm:p-4 animate-in overflow-y-auto" onClick={onClose}>
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm fixed" />
       <div
-        className="relative w-full max-w-lg bg-gradient-to-br from-slate-800 to-slate-900 rounded-none sm:rounded-2xl shadow-2xl border border-amber-500/20 my-0 sm:my-4"
+        className="relative w-full max-w-lg bg-gradient-to-br from-slate-800 to-slate-900 rounded-none sm:rounded-2xl shadow-2xl border border-cyan-500/20 my-0 sm:my-4"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 z-10 px-6 py-4 border-b border-amber-500/20 bg-gradient-to-r from-amber-500/10 to-transparent flex items-center justify-between backdrop-blur-md">
-          <h3 className="text-lg font-bold text-amber-300" style={{ fontFamily: "'Inter', sans-serif" }}>
+        <div className="sticky top-0 z-10 px-6 py-4 border-b border-cyan-500/20 bg-gradient-to-r from-cyan-500/10 to-transparent flex items-center justify-between backdrop-blur-md">
+          <h3 className="text-lg font-bold text-cyan-300" style={{ fontFamily: "'Inter', sans-serif" }}>
             {modalTitle}
           </h3>
           <button onClick={onClose} className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-700 transition-all">
@@ -61,36 +61,36 @@ export default function TargetFormModal({ initial, onSubmit, onClose, modalTitle
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4 max-h-[80vh] overflow-y-auto">
           <div>
-            <label className="block text-xs font-bold tracking-wider text-amber-300/80 uppercase mb-1.5">Title *</label>
+            <label className="block text-xs font-bold tracking-wider text-cyan-300/80 uppercase mb-1.5">Title *</label>
             <input
               type="text"
               value={formTitle}
               onChange={(e) => { setFormTitle(e.target.value); setErrors({}); }}
               autoFocus
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/40 focus:border-amber-500/40 transition-all text-sm"
+              className="w-full px-4 py-2.5 rounded-xl bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 focus:border-cyan-500/40 transition-all text-sm"
               placeholder="e.g. Daily Bible Study"
             />
             {errors.title && <p className="text-xs text-rose-400 mt-1">{errors.title}</p>}
           </div>
 
           <div>
-            <label className="block text-xs font-bold tracking-wider text-amber-300/80 uppercase mb-1.5">Description</label>
+            <label className="block text-xs font-bold tracking-wider text-cyan-300/80 uppercase mb-1.5">Description</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows={2}
-              className="w-full px-4 py-2.5 rounded-xl bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/40 transition-all text-sm resize-none"
+              className="w-full px-4 py-2.5 rounded-xl bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all text-sm resize-none"
               placeholder="Add more details..."
             />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-bold tracking-wider text-amber-300/80 uppercase mb-1.5">Frequency</label>
+              <label className="block text-xs font-bold tracking-wider text-cyan-300/80 uppercase mb-1.5">Frequency</label>
               <select
                 value={frequency}
                 onChange={(e) => setFrequency(e.target.value as Frequency)}
-                className="w-full px-3 py-2.5 rounded-xl bg-slate-900/50 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-amber-500/40 text-sm"
+                className="w-full px-3 py-2.5 rounded-xl bg-slate-900/50 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/40 text-sm"
               >
                 {Object.entries(FREQUENCY_LABELS).map(([key, label]) => (
                   <option key={key} value={key}>{label}</option>
@@ -98,11 +98,11 @@ export default function TargetFormModal({ initial, onSubmit, onClose, modalTitle
               </select>
             </div>
             <div>
-              <label className="block text-xs font-bold tracking-wider text-amber-300/80 uppercase mb-1.5">Priority</label>
+              <label className="block text-xs font-bold tracking-wider text-cyan-300/80 uppercase mb-1.5">Priority</label>
               <select
                 value={priority}
                 onChange={(e) => setPriority(e.target.value as Priority)}
-                className="w-full px-3 py-2.5 rounded-xl bg-slate-900/50 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-amber-500/40 text-sm"
+                className="w-full px-3 py-2.5 rounded-xl bg-slate-900/50 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/40 text-sm"
               >
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
@@ -112,7 +112,7 @@ export default function TargetFormModal({ initial, onSubmit, onClose, modalTitle
           </div>
 
           <div>
-            <label className="block text-xs font-bold tracking-wider text-amber-300/80 uppercase mb-1.5">Category</label>
+            <label className="block text-xs font-bold tracking-wider text-cyan-300/80 uppercase mb-1.5">Category</label>
             <div className="flex flex-wrap gap-2">
               {TARGET_CATEGORIES.map((cat) => (
                 <button
@@ -134,44 +134,44 @@ export default function TargetFormModal({ initial, onSubmit, onClose, modalTitle
           <div className="grid grid-cols-2 gap-3">
             {frequency !== 'monthly' && (
               <div>
-                <label className="block text-xs font-bold tracking-wider text-amber-300/80 uppercase mb-1.5">Week Key</label>
+                <label className="block text-xs font-bold tracking-wider text-cyan-300/80 uppercase mb-1.5">Week Key</label>
                 <input
                   type="text"
                   value={weekKey}
                   onChange={(e) => setWeekKey(e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl bg-slate-900/50 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-amber-500/40 text-sm"
+                  className="w-full px-3 py-2.5 rounded-xl bg-slate-900/50 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/40 text-sm"
                   placeholder="e.g. 2026-W15"
                 />
               </div>
             )}
             {frequency !== 'weekly' && (
               <div>
-                <label className="block text-xs font-bold tracking-wider text-amber-300/80 uppercase mb-1.5">Month Key</label>
+                <label className="block text-xs font-bold tracking-wider text-cyan-300/80 uppercase mb-1.5">Month Key</label>
                 <input
                   type="text"
                   value={monthKey}
                   onChange={(e) => setMonthKey(e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl bg-slate-900/50 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-amber-500/40 text-sm"
+                  className="w-full px-3 py-2.5 rounded-xl bg-slate-900/50 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/40 text-sm"
                   placeholder="e.g. 2026-04"
                 />
               </div>
             )}
             <div>
-              <label className="block text-xs font-bold tracking-wider text-amber-300/80 uppercase mb-1.5">Progress %</label>
+              <label className="block text-xs font-bold tracking-wider text-cyan-300/80 uppercase mb-1.5">Progress %</label>
               <input
                 type="number"
                 min={0}
                 max={100}
                 value={progress}
                 onChange={(e) => setProgress(Math.max(0, Math.min(100, parseInt(e.target.value) || 0)))}
-                className="w-full px-3 py-2.5 rounded-xl bg-slate-900/50 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-amber-500/40 text-sm"
+                className="w-full px-3 py-2.5 rounded-xl bg-slate-900/50 border border-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/40 text-sm"
               />
             </div>
           </div>
 
           <button
             type="submit"
-            className="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-sm tracking-wider shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-[1.01] active:scale-95 transition-all"
+            className="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-500 text-white font-bold text-sm tracking-wider shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.01] active:scale-95 transition-all"
           >
             Save Target
           </button>

@@ -68,9 +68,9 @@ export default function ConfessionsSection() {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-8 pb-10">
       {/* Header */}
       <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 mb-4">
-          <Volume2 size={14} className="text-amber-400" />
-          <span className="text-xs font-bold tracking-[0.2em] text-amber-400 uppercase">Daily Confessions</span>
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 mb-4">
+          <Volume2 size={14} className="text-cyan-400" />
+          <span className="text-xs font-bold tracking-[0.2em] text-cyan-400 uppercase">Daily Confessions</span>
         </div>
         <h1
           className="text-3xl md:text-5xl font-extrabold tracking-tight mb-2 text-white"
@@ -78,20 +78,20 @@ export default function ConfessionsSection() {
         >
           My Confessions
         </h1>
-        <p className="text-amber-200/60 text-sm max-w-xl mx-auto">
+        <p className="text-cyan-200/60 text-sm max-w-xl mx-auto">
           Declare who you are in Christ. Add your confessions, mark favorites, and speak them daily.
         </p>
       </div>
 
       {/* Quick actions */}
       <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
-        <button onClick={openNew} className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-[1.02] active:scale-95 transition-all">
+        <button onClick={openNew} className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-500 text-white text-sm font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.02] active:scale-95 transition-all">
           <Plus size={16} /> Add Confession
         </button>
         {confessions.length > 0 && (
           <button
             onClick={() => { setSpeakingMode(true); setSpeakingIndex(0); }}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-sm font-semibold shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:scale-[1.02] active:scale-95 transition-all"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-500 text-white text-sm font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.02] active:scale-95 transition-all"
           >
             <Volume2 size={16} /> Speak Mode
           </button>
@@ -100,13 +100,13 @@ export default function ConfessionsSection() {
 
       {/* Stats */}
       <div className="grid grid-cols-3 gap-3 max-w-md mx-auto mb-8">
-        <div className="bg-gradient-to-br from-amber-500/15 to-orange-500/15 rounded-xl p-4 text-center border border-amber-500/20">
-          <p className="text-2xl font-extrabold text-amber-300">{confessions.length}</p>
-          <p className="text-[10px] text-amber-400/70 font-bold uppercase tracking-wider">Total</p>
+        <div className="bg-gradient-to-br from-cyan-500/15 to-sky-500/15 rounded-xl p-4 text-center border border-cyan-500/20">
+          <p className="text-2xl font-extrabold text-cyan-300">{confessions.length}</p>
+          <p className="text-[10px] text-cyan-400/70 font-bold uppercase tracking-wider">Total</p>
         </div>
-        <div className="bg-gradient-to-br from-yellow-500/15 to-amber-500/15 rounded-xl p-4 text-center border border-yellow-500/20">
-          <p className="text-2xl font-extrabold text-yellow-300">{favorites.length}</p>
-          <p className="text-[10px] text-yellow-400/70 font-bold uppercase tracking-wider">Favorites</p>
+        <div className="bg-gradient-to-br from-cyan-500/15 to-cyan-500/15 rounded-xl p-4 text-center border border-cyan-500/20">
+          <p className="text-2xl font-extrabold text-cyan-300">{favorites.length}</p>
+          <p className="text-[10px] text-cyan-400/70 font-bold uppercase tracking-wider">Favorites</p>
         </div>
         <div className="bg-gradient-to-br from-slate-700/30 to-slate-800/30 rounded-xl p-4 text-center border border-slate-700/30">
           <p className="text-2xl font-extrabold text-slate-300">{Object.keys(CONFESSION_CATEGORIES).filter(k => confessions.some(c => c.category === k)).length}</p>
@@ -118,16 +118,16 @@ export default function ConfessionsSection() {
       <div className="flex flex-col sm:flex-row gap-3 mb-4">
         <div className="relative flex-1">
           <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-          <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search confessions..." className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-800/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/40 transition-all text-sm" />
+          <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search confessions..." className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-800/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all text-sm" />
         </div>
-        <button onClick={() => setShowFavoritesOnly(!showFavoritesOnly)} className={`flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold border transition-all ${showFavoritesOnly ? 'bg-amber-500/20 text-amber-300 border-amber-500/40' : 'bg-slate-800/60 text-slate-400 border-slate-700'}`}>
-          <Star size={13} className={showFavoritesOnly ? 'fill-amber-400' : ''} /> Favorites
+        <button onClick={() => setShowFavoritesOnly(!showFavoritesOnly)} className={`flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold border transition-all ${showFavoritesOnly ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40' : 'bg-slate-800/60 text-slate-400 border-slate-700'}`}>
+          <Star size={13} className={showFavoritesOnly ? 'fill-cyan-400' : ''} /> Favorites
         </button>
       </div>
 
       {/* Category filter */}
       <div className="flex flex-wrap gap-1.5 mb-6">
-        <button onClick={() => setCatFilter('all')} className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all ${catFilter === 'all' ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' : 'bg-slate-800/60 text-slate-400 border border-slate-700'}`}>All</button>
+        <button onClick={() => setCatFilter('all')} className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all ${catFilter === 'all' ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40' : 'bg-slate-800/60 text-slate-400 border border-slate-700'}`}>All</button>
         {(Object.entries(CONFESSION_CATEGORIES) as [ConfessionCategory, typeof CONFESSION_CATEGORIES[ConfessionCategory]][]).map(([key, conf]) => (
           <button key={key} onClick={() => setCatFilter(key)} className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all ${catFilter === key ? `${conf.bg} ${conf.text} border ${conf.border}` : 'bg-slate-800/60 text-slate-400 border border-slate-700'}`}>
             {conf.emoji} {conf.label}
@@ -141,13 +141,13 @@ export default function ConfessionsSection() {
           {filtered.map(c => {
             const cat = CONFESSION_CATEGORIES[c.category];
             return (
-              <div key={c.id} className="group relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 rounded-2xl border border-slate-700/50 p-5 hover:border-amber-500/30 transition-all">
+              <div key={c.id} className="group relative bg-gradient-to-br from-slate-800/80 to-slate-900/80 rounded-2xl border border-slate-700/50 p-5 hover:border-cyan-500/30 transition-all">
                 <div className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-r from-amber-500 to-orange-500" />
+                  <div className="w-full h-full bg-gradient-to-r from-cyan-500 to-sky-500" />
                 </div>
                 <div className="flex items-start gap-4 mt-1">
                   <button onClick={() => toggleFavorite(c.id)} className="flex-shrink-0 mt-1">
-                    <Star size={18} className={`transition-all ${c.isFavorite ? 'text-amber-400 fill-amber-400' : 'text-slate-600 hover:text-amber-400/60'}`} strokeWidth={1.5} />
+                    <Star size={18} className={`transition-all ${c.isFavorite ? 'text-cyan-400 fill-cyan-400' : 'text-slate-600 hover:text-cyan-400/60'}`} strokeWidth={1.5} />
                   </button>
                   <div className="flex-1 min-w-0">
                     <p className="text-base text-white leading-relaxed font-medium italic">
@@ -158,14 +158,14 @@ export default function ConfessionsSection() {
                         {cat.emoji} {cat.label}
                       </span>
                       {c.scriptureRef && (
-                        <span className="flex items-center gap-1 text-[11px] text-amber-400/70">
+                        <span className="flex items-center gap-1 text-[11px] text-cyan-400/70">
                           <BookOpen size={10} /> {c.scriptureRef}
                         </span>
                       )}
                     </div>
                   </div>
                   <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
-                    <button onClick={() => openEdit(c)} className="p-1.5 rounded-lg text-slate-400 hover:text-amber-400 hover:bg-amber-500/10 transition-all"><Pencil size={13} /></button>
+                    <button onClick={() => openEdit(c)} className="p-1.5 rounded-lg text-slate-400 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all"><Pencil size={13} /></button>
                     <button onClick={() => { if (confirm('Delete?')) deleteConfession(c.id); }} className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-950/30 transition-all"><Trash2 size={13} /></button>
                   </div>
                 </div>
@@ -176,10 +176,10 @@ export default function ConfessionsSection() {
       ) : (
         <div className="text-center py-20 bg-slate-900/30 rounded-2xl border border-dashed border-slate-700">
           <div className="text-4xl mb-4">✨</div>
-          <h3 className="text-amber-200/70 font-semibold mb-1">{confessions.length === 0 ? 'No confessions yet' : 'No matches'}</h3>
+          <h3 className="text-cyan-200/70 font-semibold mb-1">{confessions.length === 0 ? 'No confessions yet' : 'No matches'}</h3>
           <p className="text-slate-400 text-sm mb-4">{confessions.length === 0 ? 'Start declaring who you are in Christ' : 'Try adjusting your filters'}</p>
           {confessions.length === 0 && (
-            <button onClick={openNew} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 text-sm font-semibold hover:bg-amber-500/30 transition-all">
+            <button onClick={openNew} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 text-sm font-semibold hover:bg-cyan-500/30 transition-all">
               <Plus size={16} /> Add Your First Confession
             </button>
           )}
@@ -188,11 +188,11 @@ export default function ConfessionsSection() {
 
       {/* Verse */}
       <div className="mt-12 text-center">
-        <div className="inline-block px-8 py-5 rounded-2xl bg-slate-900/50 border border-amber-500/20 backdrop-blur-sm">
-          <p className="text-amber-200/90 italic text-base mb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-            <span className="text-amber-400/60">"</span>Death and life are in the power of the tongue.<span className="text-amber-400/60">"</span>
+        <div className="inline-block px-8 py-5 rounded-2xl bg-slate-900/50 border border-cyan-500/20 backdrop-blur-sm">
+          <p className="text-cyan-200/90 italic text-base mb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+            <span className="text-cyan-400/60">"</span>Death and life are in the power of the tongue.<span className="text-cyan-400/60">"</span>
           </p>
-          <p className="text-amber-400 text-xs font-bold tracking-widest">— PROVERBS 18:21 ✦ JJM 2026</p>
+          <p className="text-cyan-400 text-xs font-bold tracking-widest">— PROVERBS 18:21 ✦ JJM 2026</p>
         </div>
       </div>
 
@@ -212,15 +212,15 @@ export default function ConfessionsSection() {
             </button>
             <div className="p-6 space-y-5">
               <div className="flex items-center gap-3 pb-4 border-b border-slate-700/50">
-                <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-xl shadow-lg shadow-amber-500/20">✨</div>
+                <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-cyan-500 to-sky-600 flex items-center justify-center text-xl shadow-lg shadow-cyan-500/20">✨</div>
                 <div>
-                  <p className="text-[10px] text-amber-400/70 font-bold tracking-[0.2em] uppercase">CONFESSIONS</p>
+                  <p className="text-[10px] text-cyan-400/70 font-bold tracking-[0.2em] uppercase">CONFESSIONS</p>
                   <h3 className="text-lg font-bold text-white">{editingId ? 'Edit Confession' : 'New Confession'}</h3>
                 </div>
               </div>
               <div>
                 <label className="block text-xs font-bold tracking-[0.15em] text-slate-400 uppercase mb-2">Your Confession *</label>
-                <textarea value={formText} onChange={(e) => setFormText(e.target.value)} rows={4} autoFocus placeholder="I am the righteousness of God in Christ Jesus..." className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/40 transition-all text-sm resize-none" />
+                <textarea value={formText} onChange={(e) => setFormText(e.target.value)} rows={4} autoFocus placeholder="I am the righteousness of God in Christ Jesus..." className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all text-sm resize-none" />
               </div>
               <div>
                 <label className="block text-xs font-bold tracking-[0.15em] text-slate-400 uppercase mb-2">Category</label>
@@ -234,9 +234,9 @@ export default function ConfessionsSection() {
               </div>
               <div>
                 <label className="block text-xs font-bold tracking-[0.15em] text-slate-400 uppercase mb-2">Scripture Reference</label>
-                <input type="text" value={formScripture} onChange={(e) => setFormScripture(e.target.value)} placeholder="e.g. 2 Corinthians 5:21" className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/40 transition-all text-sm" />
+                <input type="text" value={formScripture} onChange={(e) => setFormScripture(e.target.value)} placeholder="e.g. 2 Corinthians 5:21" className="w-full px-4 py-3 rounded-xl bg-slate-800/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all text-sm" />
               </div>
-              <button onClick={handleSubmit} className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-sm tracking-wider shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-[1.01] active:scale-95 transition-all">
+              <button onClick={handleSubmit} className="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-500 text-white font-bold text-sm tracking-wider shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.01] active:scale-95 transition-all">
                 {editingId ? 'Save Changes' : 'Save Confession'}
               </button>
             </div>
@@ -279,7 +279,7 @@ export default function ConfessionsSection() {
                 "{currentSpeak.text}"
               </p>
               {currentSpeak.scriptureRef && (
-                <p className="text-amber-400 text-sm font-semibold mt-4 text-center">— {currentSpeak.scriptureRef}</p>
+                <p className="text-cyan-400 text-sm font-semibold mt-4 text-center">— {currentSpeak.scriptureRef}</p>
               )}
             </div>
 
@@ -291,7 +291,7 @@ export default function ConfessionsSection() {
                   <button
                     key={i}
                     onClick={() => setSpeakingIndex(i)}
-                    className={`h-1.5 rounded-full transition-all ${i === speakingIndex ? 'w-6 bg-amber-400' : 'w-1.5 bg-slate-600 hover:bg-slate-500'}`}
+                    className={`h-1.5 rounded-full transition-all ${i === speakingIndex ? 'w-6 bg-cyan-400' : 'w-1.5 bg-slate-600 hover:bg-slate-500'}`}
                   />
                 ))}
               </div>

@@ -29,16 +29,16 @@ function TimerBanner({ hour, duration, onDone, onStop }: {
   const ss = (secs % 60).toString().padStart(2, '0');
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-blue-600 shadow-2xl">
-      <div className="h-1 bg-blue-400/40">
+    <div className="fixed top-0 left-0 right-0 z-50 bg-sky-600 shadow-2xl">
+      <div className="h-1 bg-sky-400/40">
         <div className="h-full bg-white transition-all duration-1000" style={{ width: `${pct}%` }} />
       </div>
       <div className="flex items-center justify-between px-4 py-3 max-w-2xl mx-auto">
         <div className="flex items-center gap-3">
-          <Clock size={18} className="text-blue-200 animate-pulse" />
+          <Clock size={18} className="text-sky-200 animate-pulse" />
           <div>
             <p className="text-white text-sm font-bold">{fmt(hour)} — {duration} min prayer</p>
-            <p className="text-blue-200 text-xs">{mm}:{ss} remaining</p>
+            <p className="text-sky-200 text-xs">{mm}:{ss} remaining</p>
           </div>
         </div>
         <div className="flex gap-2">
@@ -140,7 +140,7 @@ export default function PrayerSection() {
 
       {/* Sub-tab toggle */}
       <div className="flex p-1 rounded-full bg-slate-800/70 border border-slate-700/50 mb-8 max-w-xs mx-auto">
-        <button onClick={() => setSubTab('journal')} className={`flex-1 py-2 rounded-full text-sm font-semibold transition-all ${subTab === 'journal' ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg' : 'text-slate-400 hover:text-slate-200'}`}>
+        <button onClick={() => setSubTab('journal')} className={`flex-1 py-2 rounded-full text-sm font-semibold transition-all ${subTab === 'journal' ? 'bg-gradient-to-r from-cyan-500 to-sky-500 text-white shadow-lg' : 'text-slate-400 hover:text-slate-200'}`}>
           Prayer Journal
         </button>
         <button onClick={() => setSubTab('hourly')} className={`flex-1 py-2 rounded-full text-sm font-semibold transition-all ${subTab === 'hourly' ? 'bg-gradient-to-r from-sky-500 to-cyan-500 text-white shadow-lg' : 'text-slate-400 hover:text-slate-200'}`}>
@@ -152,7 +152,7 @@ export default function PrayerSection() {
       <div className="flex items-center justify-center gap-3 mb-6">
         <button onClick={() => shiftDate(-1)} className="p-2 rounded-xl bg-slate-800/60 border border-slate-700 text-slate-400 hover:text-white transition-all"><ChevronLeft size={18} /></button>
         <div className="flex items-center gap-2 px-5 py-2 rounded-full bg-slate-800/60 border border-slate-700">
-          <Calendar size={14} className="text-amber-400" />
+          <Calendar size={14} className="text-cyan-400" />
           <span className="text-sm font-bold text-white">{new Date(dateFilter + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'short', month: 'long', day: 'numeric' })}</span>
           {isToday && <span className="text-[10px] font-bold text-sky-400 bg-sky-500/20 px-1.5 py-0.5 rounded-full">TODAY</span>}
         </div>
@@ -197,15 +197,15 @@ export default function PrayerSection() {
           </div>
 
           {/* 30 Minutes in Tongues */}
-          <div className="rounded-2xl border border-violet-500/30 bg-violet-500/5 p-4">
+          <div className="rounded-2xl border border-cyan-500/30 bg-cyan-500/5 p-4">
             <div className="flex items-center gap-2 mb-3">
               <span className="text-lg">🔥</span>
               <div>
                 <p className="text-white font-bold text-sm">30 Minutes in Tongues</p>
-                <p className="text-violet-300/60 text-xs">Complete all 3 sessions today</p>
+                <p className="text-cyan-300/60 text-xs">Complete all 3 sessions today</p>
               </div>
               <div className="ml-auto">
-                <span className="text-xs font-bold text-violet-300 bg-violet-500/20 px-2 py-1 rounded-full border border-violet-500/30">
+                <span className="text-xs font-bold text-cyan-300 bg-cyan-500/20 px-2 py-1 rounded-full border border-cyan-500/30">
                   {(['morning','afternoon','evening'] as const).filter(s =>
                     (tonguesSessions || []).find(t => t.session === s && t.date === dateFilter && t.completed)
                   ).length}/3 done
@@ -227,14 +227,14 @@ export default function PrayerSection() {
                     onClick={() => toggleTongues && toggleTongues(s.key, dateFilter)}
                     className={`flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl border font-semibold transition-all ${
                       done
-                        ? 'bg-violet-500/20 border-violet-500/50 text-violet-300'
-                        : 'bg-slate-800/50 border-slate-700/50 text-slate-400 hover:border-violet-500/30 hover:text-violet-300'
+                        ? 'bg-cyan-500/20 border-cyan-500/50 text-cyan-300'
+                        : 'bg-slate-800/50 border-slate-700/50 text-slate-400 hover:border-cyan-500/30 hover:text-cyan-300'
                     }`}
                   >
                     <span className="text-xl">{s.emoji}</span>
                     <span className="text-xs font-bold">{s.label}</span>
                     <span className="text-[10px] text-slate-500">{s.time}</span>
-                    {done && <span className="text-[10px] font-bold text-violet-400 bg-violet-500/20 px-1.5 rounded-full">✓ Done</span>}
+                    {done && <span className="text-[10px] font-bold text-cyan-400 bg-cyan-500/20 px-1.5 rounded-full">✓ Done</span>}
                   </button>
                 );
               })}
@@ -298,14 +298,14 @@ export default function PrayerSection() {
           {/* Add point */}
           <div className="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-5">
             <div className="flex items-center gap-3 mb-5">
-              <div className="h-9 w-9 rounded-xl bg-amber-500/20 flex items-center justify-center"><Plus size={18} className="text-amber-400" /></div>
+              <div className="h-9 w-9 rounded-xl bg-cyan-500/20 flex items-center justify-center"><Plus size={18} className="text-cyan-400" /></div>
               <h2 className="text-base font-bold text-white">Add Prayer Point</h2>
             </div>
             <form onSubmit={handleAddPoint} className="space-y-3">
               <div className="flex gap-1 p-1 bg-slate-900/50 rounded-xl border border-slate-700/50">
                 {(['day', 'week', 'custom'] as const).map(p => (
                   <button key={p} type="button" onClick={() => setPeriod(p)}
-                    className={`flex-1 py-1.5 rounded-lg text-[10px] font-bold uppercase transition-all ${period === p ? 'bg-amber-500 text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}>
+                    className={`flex-1 py-1.5 rounded-lg text-[10px] font-bold uppercase transition-all ${period === p ? 'bg-cyan-500 text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}>
                     {p}
                   </button>
                 ))}
@@ -315,9 +315,9 @@ export default function PrayerSection() {
                   value={newPoint} onChange={e => setNewPoint(e.target.value)}
                   placeholder={`Add a prayer point for this ${period}...`}
                   rows={4}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/40 text-sm resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700/60 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 text-sm resize-none"
                 />
-                <button type="submit" className="absolute bottom-3 right-3 h-8 w-8 rounded-lg bg-amber-500 text-white flex items-center justify-center hover:bg-amber-600 transition-all active:scale-95">
+                <button type="submit" className="absolute bottom-3 right-3 h-8 w-8 rounded-lg bg-cyan-500 text-white flex items-center justify-center hover:bg-cyan-600 transition-all active:scale-95">
                   <Plus size={16} />
                 </button>
               </div>
@@ -337,8 +337,8 @@ export default function PrayerSection() {
                   <p className="text-xs font-bold uppercase tracking-wider">No prayer points for this day</p>
                 </div>
               ) : filteredPoints.map(p => (
-                <div key={p.id} className="group flex items-start gap-3 p-3 rounded-xl bg-slate-900/40 border border-slate-700/30 hover:border-amber-500/30 transition-all">
-                  <button onClick={() => togglePrayerPoint(p.id)} className={`mt-0.5 shrink-0 transition-all ${p.completed ? 'text-emerald-400' : 'text-slate-600 hover:text-amber-400'}`}>
+                <div key={p.id} className="group flex items-start gap-3 p-3 rounded-xl bg-slate-900/40 border border-slate-700/30 hover:border-cyan-500/30 transition-all">
+                  <button onClick={() => togglePrayerPoint(p.id)} className={`mt-0.5 shrink-0 transition-all ${p.completed ? 'text-sky-400' : 'text-slate-600 hover:text-cyan-400'}`}>
                     {p.completed ? <CheckCircle2 size={16} /> : <Circle size={16} />}
                   </button>
                   <p className={`flex-1 text-sm leading-relaxed ${p.completed ? 'text-slate-500 line-through' : 'text-slate-200'}`}>{p.text}</p>

@@ -36,9 +36,9 @@ export default function BooksSection() {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-10">
       {/* Header */}
       <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 mb-4">
-          <BookIcon size={14} className="text-emerald-400" />
-          <span className="text-xs font-bold tracking-[0.2em] text-emerald-400 uppercase">My Library</span>
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/30 mb-4">
+          <BookIcon size={14} className="text-sky-400" />
+          <span className="text-xs font-bold tracking-[0.2em] text-sky-400 uppercase">My Library</span>
         </div>
         <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-2 text-white" style={{ fontFamily: "'Montserrat', sans-serif" }}>
           Books & Reading
@@ -57,14 +57,14 @@ export default function BooksSection() {
             value={search} 
             onChange={(e) => setSearch(e.target.value)} 
             placeholder="Search titles or authors..." 
-            className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-800/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 transition-all text-sm" 
+            className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-800/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500/40 transition-all text-sm" 
           />
         </div>
         <div className="flex gap-2">
           <select 
             value={statusFilter} 
             onChange={(e) => setStatusFilter(e.target.value as any)}
-            className="px-4 py-2.5 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/40"
+            className="px-4 py-2.5 rounded-xl bg-slate-800/50 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/40"
           >
             <option value="all">All Status</option>
             <option value="reading">Currently Reading</option>
@@ -73,7 +73,7 @@ export default function BooksSection() {
           </select>
           <button 
             onClick={handleOpenAdd}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-sm font-semibold shadow-lg hover:shadow-emerald-600/30 transition-all active:scale-95"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-600 text-white text-sm font-semibold shadow-lg hover:shadow-sky-600/30 transition-all active:scale-95"
           >
             <Plus size={16} /> Add Book
           </button>
@@ -94,7 +94,7 @@ export default function BooksSection() {
           <p className="text-slate-500 text-sm mb-6">Start building your reading list</p>
           <button 
             onClick={handleOpenAdd}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-sm font-semibold hover:bg-emerald-500/30 transition-all"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sky-500/20 border border-sky-500/40 text-sky-400 text-sm font-semibold hover:bg-sky-500/30 transition-all"
           >
             <Plus size={16} /> Add Your First Book
           </button>
@@ -125,7 +125,7 @@ function BookCard({ book, onEdit, onDelete }: {
   const percent = Math.round((book.progressPages / book.totalPages) * 100) || 0;
   
   return (
-    <div className="bg-slate-800/40 border border-slate-700/50 rounded-2xl overflow-hidden hover:border-emerald-500/40 transition-all group shadow-xl">
+    <div className="bg-slate-800/40 border border-slate-700/50 rounded-2xl overflow-hidden hover:border-sky-500/40 transition-all group shadow-xl">
       <div className="aspect-[3/4] bg-slate-700 relative overflow-hidden">
         {book.coverImage ? (
           <img src={book.coverImage} alt={book.title} className="w-full h-full object-cover transition-transform group-hover:scale-105" />
@@ -136,13 +136,13 @@ function BookCard({ book, onEdit, onDelete }: {
           </div>
         )}
         <div className="absolute top-3 right-3 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-          <button onClick={() => onEdit(book)} className="p-2 rounded-lg bg-black/60 text-white hover:bg-emerald-500 transition-colors"><Pencil size={14}/></button>
+          <button onClick={() => onEdit(book)} className="p-2 rounded-lg bg-black/60 text-white hover:bg-sky-500 transition-colors"><Pencil size={14}/></button>
           <button onClick={() => onDelete(book.id)} className="p-2 rounded-lg bg-black/60 text-white hover:bg-rose-500 transition-colors"><Trash2 size={14}/></button>
         </div>
         <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent">
           <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
-            book.status === 'reading' ? 'bg-emerald-500 text-white' : 
-            book.status === 'finished' ? 'bg-blue-500 text-white' : 'bg-slate-600 text-white'
+            book.status === 'reading' ? 'bg-sky-500 text-white' : 
+            book.status === 'finished' ? 'bg-sky-500 text-white' : 'bg-slate-600 text-white'
           }`}>
             {book.status.replace('-', ' ')}
           </span>
@@ -156,19 +156,19 @@ function BookCard({ book, onEdit, onDelete }: {
           <div className="space-y-2">
             <div className="flex justify-between text-[10px] font-bold text-slate-500 uppercase">
               <span>Progress</span>
-              <span className="text-emerald-400">{percent}%</span>
+              <span className="text-sky-400">{percent}%</span>
             </div>
             <div className="h-1.5 bg-slate-700 rounded-full overflow-hidden">
-              <div className="h-full bg-emerald-500 transition-all" style={{ width: `${percent}%` }} />
+              <div className="h-full bg-sky-500 transition-all" style={{ width: `${percent}%` }} />
             </div>
             <p className="text-[10px] text-slate-500 text-center">{book.progressPages} of {book.totalPages} pages</p>
           </div>
         )}
         
         {book.status === 'finished' && (
-          <div className="flex items-center gap-1 text-yellow-400">
+          <div className="flex items-center gap-1 text-cyan-400">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} size={14} className={i < (book.rating || 0) ? 'fill-yellow-400' : 'text-slate-600'} />
+              <Star key={i} size={14} className={i < (book.rating || 0) ? 'fill-cyan-400' : 'text-slate-600'} />
             ))}
           </div>
         )}
@@ -252,7 +252,7 @@ function BookFormModal({ initial, onClose, onSubmit }: { initial: Book | null; o
           
           <button 
             onClick={() => onSubmit({ title, author, status, category, totalPages, progressPages, notes, coverImage })}
-            className="w-full py-3 bg-emerald-500 text-white font-bold rounded-xl hover:bg-emerald-600 transition-all"
+            className="w-full py-3 bg-sky-500 text-white font-bold rounded-xl hover:bg-sky-600 transition-all"
           >
             Save Book
           </button>

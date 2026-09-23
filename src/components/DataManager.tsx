@@ -108,11 +108,11 @@ export default function DataManager({ onClose }: DataManagerProps) {
         <div className="p-6 space-y-5">
           {/* Header */}
           <div className="flex items-center gap-3 pb-4 border-b border-slate-700/50">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-sky-500 to-cyan-600 flex items-center justify-center shadow-lg shadow-sky-500/20">
               <HardDrive size={18} className="text-white" />
             </div>
             <div>
-              <p className="text-[10px] text-emerald-400/70 font-bold tracking-[0.2em] uppercase">DATA MANAGEMENT</p>
+              <p className="text-[10px] text-sky-400/70 font-bold tracking-[0.2em] uppercase">DATA MANAGEMENT</p>
               <h3 className="text-lg font-bold text-white">Backup & Restore</h3>
             </div>
           </div>
@@ -123,27 +123,27 @@ export default function DataManager({ onClose }: DataManagerProps) {
 
           {/* Status message */}
           {status && (
-            <div className={`flex items-start gap-3 p-3 rounded-xl border ${status.type === 'success' ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-rose-500/10 border-rose-500/30'}`}>
-              {status.type === 'success' ? <CheckCircle2 size={18} className="text-emerald-400 flex-shrink-0 mt-0.5" /> : <AlertTriangle size={18} className="text-rose-400 flex-shrink-0 mt-0.5" />}
-              <p className={`text-sm ${status.type === 'success' ? 'text-emerald-300' : 'text-rose-300'}`}>{status.message}</p>
+            <div className={`flex items-start gap-3 p-3 rounded-xl border ${status.type === 'success' ? 'bg-sky-500/10 border-sky-500/30' : 'bg-rose-500/10 border-rose-500/30'}`}>
+              {status.type === 'success' ? <CheckCircle2 size={18} className="text-sky-400 flex-shrink-0 mt-0.5" /> : <AlertTriangle size={18} className="text-rose-400 flex-shrink-0 mt-0.5" />}
+              <p className={`text-sm ${status.type === 'success' ? 'text-sky-300' : 'text-rose-300'}`}>{status.message}</p>
             </div>
           )}
 
           {/* Export */}
           <div className="space-y-3">
             <h4 className="text-xs font-bold tracking-[0.15em] text-slate-400 uppercase">Export (Save your data)</h4>
-            <button onClick={handleExport} className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl bg-slate-800/50 border border-slate-700/60 hover:border-emerald-500/40 text-white text-sm font-medium transition-all hover:bg-slate-800/80 group">
-              <div className="h-10 w-10 rounded-xl bg-emerald-500/20 flex items-center justify-center group-hover:bg-emerald-500/30 transition-all">
-                <Download size={18} className="text-emerald-400" />
+            <button onClick={handleExport} className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl bg-slate-800/50 border border-slate-700/60 hover:border-sky-500/40 text-white text-sm font-medium transition-all hover:bg-slate-800/80 group">
+              <div className="h-10 w-10 rounded-xl bg-sky-500/20 flex items-center justify-center group-hover:bg-sky-500/30 transition-all">
+                <Download size={18} className="text-sky-400" />
               </div>
               <div className="text-left">
                 <p className="font-semibold">Download Backup File</p>
                 <p className="text-xs text-slate-400">Save as .json file to your device</p>
               </div>
             </button>
-            <button onClick={handleSaveToGoogleDrive} className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl bg-slate-800/50 border border-slate-700/60 hover:border-blue-500/40 text-white text-sm font-medium transition-all hover:bg-slate-800/80 group">
-              <div className="h-10 w-10 rounded-xl bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/30 transition-all">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="text-blue-400"><path d="M12 2L2 19.5h20L12 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M8.5 19.5L12 13l3.5 6.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            <button onClick={handleSaveToGoogleDrive} className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl bg-slate-800/50 border border-slate-700/60 hover:border-sky-500/40 text-white text-sm font-medium transition-all hover:bg-slate-800/80 group">
+              <div className="h-10 w-10 rounded-xl bg-sky-500/20 flex items-center justify-center group-hover:bg-sky-500/30 transition-all">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="text-sky-400"><path d="M12 2L2 19.5h20L12 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M8.5 19.5L12 13l3.5 6.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </div>
               <div className="text-left">
                 <p className="font-semibold">Save to Google Drive</p>
@@ -155,9 +155,9 @@ export default function DataManager({ onClose }: DataManagerProps) {
           {/* Import */}
           <div className="space-y-3">
             <h4 className="text-xs font-bold tracking-[0.15em] text-slate-400 uppercase">Import (Restore your data)</h4>
-            <button onClick={() => fileRef.current?.click()} className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl bg-slate-800/50 border border-dashed border-slate-700/60 hover:border-amber-500/40 text-white text-sm font-medium transition-all hover:bg-slate-800/80 group">
-              <div className="h-10 w-10 rounded-xl bg-amber-500/20 flex items-center justify-center group-hover:bg-amber-500/30 transition-all">
-                <Upload size={18} className="text-amber-400" />
+            <button onClick={() => fileRef.current?.click()} className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl bg-slate-800/50 border border-dashed border-slate-700/60 hover:border-cyan-500/40 text-white text-sm font-medium transition-all hover:bg-slate-800/80 group">
+              <div className="h-10 w-10 rounded-xl bg-cyan-500/20 flex items-center justify-center group-hover:bg-cyan-500/30 transition-all">
+                <Upload size={18} className="text-cyan-400" />
               </div>
               <div className="text-left">
                 <p className="font-semibold">Load Backup File</p>

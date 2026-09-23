@@ -100,13 +100,13 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
       const acts = dayActivitiesMap[key] || [];
       return `
         <div style="flex:1;padding:12px;background:#1e293b;border-radius:8px;margin:4px;min-width:80px">
-          <div style="font-weight:bold;color:#d4a84b;margin-bottom:8px;font-size:14px">
+          <div style="font-weight:bold;color:#22d3ee;margin-bottom:8px;font-size:14px">
             ${d.toLocaleDateString('en-US', { weekday: 'short' })}<br>
             ${d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
           </div>
           <div style="color:#cbd5e1;font-size:12px">
             ${acts.length > 0
-              ? acts.map(a => `<div style="margin-bottom:6px;padding:6px 8px;background:#0f172a;border-radius:4px;border-left:3px solid #d4a84b">${a.completed ? '✓ ' : '○ '}${a.title}</div>`).join('')
+              ? acts.map(a => `<div style="margin-bottom:6px;padding:6px 8px;background:#0f172a;border-radius:4px;border-left:3px solid #22d3ee">${a.completed ? '✓ ' : '○ '}${a.title}</div>`).join('')
               : '<div style="color:#64748b;font-style:italic">No activities</div>'
             }
           </div>
@@ -118,23 +118,23 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
       <html><head><title>My Day Plan - Targets Report</title>
       <style>
         body { font-family: 'Arial', sans-serif; background: #0f172a; color: #f1f5f9; padding: 40px; max-width: 1000px; margin: 0 auto; }
-        h1 { color: #d4a84b; font-size: 32px; margin-bottom: 8px; }
-        h2 { color: #f5e6a8; border-bottom: 2px solid #d4a84b; padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px; }
+        h1 { color: #22d3ee; font-size: 32px; margin-bottom: 8px; }
+        h2 { color: #a5f3fc; border-bottom: 2px solid #22d3ee; padding-bottom: 8px; margin-top: 32px; margin-bottom: 16px; }
         table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
         th, td { padding: 12px; text-align: left; border-bottom: 1px solid #334155; }
-        th { background: #1e293b; color: #d4a84b; font-weight: bold; }
+        th { background: #1e293b; color: #22d3ee; font-weight: bold; }
         .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0; }
-        .stat-card { background: #1e293b; padding: 20px; border-radius: 12px; text-align: center; border-left: 4px solid #d4a84b; }
-        .stat-number { font-size: 36px; font-weight: bold; color: #d4a84b; margin: 0; }
+        .stat-card { background: #1e293b; padding: 20px; border-radius: 12px; text-align: center; border-left: 4px solid #22d3ee; }
+        .stat-number { font-size: 36px; font-weight: bold; color: #22d3ee; margin: 0; }
         .stat-label { color: #94a3b8; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
         .week-days { display: flex; flex-wrap: wrap; margin: 24px 0; }
       </style></head><body>
         <h1>Target Plan Report</h1>
         <p style="color:#94a3b8;font-style:italic">Generated from My Day Plan — JJM 2026</p>
 
-        <div style="background:#1e293b;padding:16px;border-radius:12px;border-left:4px solid #d4a84b;margin:16px 0">
-          <strong style="color:#d4a84b">📅 Week of:</strong> ${getWeekLabel(activeWeek)} &nbsp;|&nbsp;
-          <strong style="color:#d4a84b">📅 Month:</strong> ${getMonthName(activeMonth)}
+        <div style="background:#1e293b;padding:16px;border-radius:12px;border-left:4px solid #22d3ee;margin:16px 0">
+          <strong style="color:#22d3ee">📅 Week of:</strong> ${getWeekLabel(activeWeek)} &nbsp;|&nbsp;
+          <strong style="color:#22d3ee">📅 Month:</strong> ${getMonthName(activeMonth)}
         </div>
 
         <h2>Weekly & Daily Targets</h2>
@@ -179,9 +179,9 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
       {/* Header */}
       <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 mb-4">
-          <TargetIcon size={14} className="text-amber-400" />
-          <span className="text-xs font-bold tracking-[0.2em] text-amber-400 uppercase">Goal Tracker</span>
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 mb-4">
+          <TargetIcon size={14} className="text-cyan-400" />
+          <span className="text-xs font-bold tracking-[0.2em] text-cyan-400 uppercase">Goal Tracker</span>
         </div>
         <h1
           className="text-3xl md:text-5xl font-extrabold mb-3 tracking-tight text-white"
@@ -189,7 +189,7 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
         >
           TARGETS & GOALS
         </h1>
-        <p className="text-amber-200/60 text-sm max-w-xl mx-auto">
+        <p className="text-cyan-200/60 text-sm max-w-xl mx-auto">
           Plan weekly targets, set monthly goals, and track your progress. Stay consistent, stay blessed.
         </p>
       </div>
@@ -201,7 +201,7 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
             onClick={() => setViewMode('weekly')}
             className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
               viewMode === 'weekly'
-                ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg shadow-amber-500/20'
+                ? 'bg-gradient-to-r from-cyan-500 to-sky-500 text-white shadow-lg shadow-cyan-500/20'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -211,7 +211,7 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
             onClick={() => setViewMode('monthly')}
             className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
               viewMode === 'monthly'
-                ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg shadow-amber-500/20'
+                ? 'bg-gradient-to-r from-cyan-500 to-sky-500 text-white shadow-lg shadow-cyan-500/20'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -222,13 +222,13 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
         <div className="flex items-center gap-2">
           <button
             onClick={handleExportPdf}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-800/60 border border-slate-700 text-slate-300 text-xs font-semibold hover:border-amber-500/40 hover:text-amber-300 transition-all"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-800/60 border border-slate-700 text-slate-300 text-xs font-semibold hover:border-cyan-500/40 hover:text-cyan-300 transition-all"
           >
             <Download size={14} /> Export PDF
           </button>
           <button
             onClick={() => { setEditingTarget(null); setFormOpen(true); }}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-semibold shadow-lg shadow-amber-500/20 hover:scale-[1.02] active:scale-95 transition-all"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-500 text-white text-xs font-semibold shadow-lg shadow-cyan-500/20 hover:scale-[1.02] active:scale-95 transition-all"
           >
             <Plus size={14} /> New Target
           </button>
@@ -248,7 +248,7 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
               </button>
               <div>
                 <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                  <Calendar size={16} className="text-amber-400" />
+                  <Calendar size={16} className="text-cyan-400" />
                   {getWeekLabel(activeWeek)}
                 </h2>
                 <p className="text-xs text-slate-400 mt-0.5">Weekly targets & daily activities</p>
@@ -261,7 +261,7 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
               </button>
               <button
                 onClick={() => setActiveWeek(getWeekKey(new Date()))}
-                className="px-3 py-1.5 text-xs rounded-lg bg-amber-500/20 border border-amber-500/40 text-amber-300 font-bold hover:bg-amber-500/30 transition-all ml-2"
+                className="px-3 py-1.5 text-xs rounded-lg bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 font-bold hover:bg-cyan-500/30 transition-all ml-2"
               >
                 Today
               </button>
@@ -270,15 +270,15 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
             <div className="flex items-center gap-4 flex-wrap">
               <div className="flex items-center gap-2">
                 <span className="text-[10px] text-slate-500 font-bold tracking-wider uppercase">Total</span>
-                <span className="text-lg font-bold text-amber-300">{weekStats.total}</span>
+                <span className="text-lg font-bold text-cyan-300">{weekStats.total}</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-[10px] text-slate-500 font-bold tracking-wider uppercase">Done</span>
-                <span className="text-lg font-bold text-emerald-300">{weekStats.completed}</span>
+                <span className="text-lg font-bold text-sky-300">{weekStats.completed}</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-[10px] text-slate-500 font-bold tracking-wider uppercase">Avg</span>
-                <span className="text-lg font-bold text-amber-400">{weekStats.avgProgress}%</span>
+                <span className="text-lg font-bold text-cyan-400">{weekStats.avgProgress}%</span>
               </div>
             </div>
           </div>
@@ -293,7 +293,7 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
               </button>
               <div>
                 <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                  <Calendar size={16} className="text-amber-400" />
+                  <Calendar size={16} className="text-cyan-400" />
                   {getMonthName(activeMonth)}
                 </h2>
                 <p className="text-xs text-slate-400 mt-0.5">Monthly goals and long-term targets</p>
@@ -306,7 +306,7 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
               </button>
               <button
                 onClick={() => setActiveMonth(getMonthKey(new Date()))}
-                className="px-3 py-1.5 text-xs rounded-lg bg-amber-500/20 border border-amber-500/40 text-amber-300 font-bold hover:bg-amber-500/30 transition-all ml-2"
+                className="px-3 py-1.5 text-xs rounded-lg bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 font-bold hover:bg-cyan-500/30 transition-all ml-2"
               >
                 This Month
               </button>
@@ -315,15 +315,15 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
             <div className="flex items-center gap-4 flex-wrap">
               <div className="flex items-center gap-2">
                 <span className="text-[10px] text-slate-500 font-bold tracking-wider uppercase">Total</span>
-                <span className="text-lg font-bold text-amber-300">{monthStats.total}</span>
+                <span className="text-lg font-bold text-cyan-300">{monthStats.total}</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-[10px] text-slate-500 font-bold tracking-wider uppercase">Done</span>
-                <span className="text-lg font-bold text-emerald-300">{monthStats.completed}</span>
+                <span className="text-lg font-bold text-sky-300">{monthStats.completed}</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-[10px] text-slate-500 font-bold tracking-wider uppercase">Avg</span>
-                <span className="text-lg font-bold text-amber-400">{monthStats.avgProgress}%</span>
+                <span className="text-lg font-bold text-cyan-400">{monthStats.avgProgress}%</span>
               </div>
             </div>
           </div>
@@ -345,30 +345,30 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
                   key={dayKey}
                   className={`rounded-xl p-2 sm:p-3 text-center transition-all border ${
                     todayMatch
-                      ? 'bg-amber-500/15 border-amber-500/40 shadow-lg shadow-amber-500/10'
+                      ? 'bg-cyan-500/15 border-cyan-500/40 shadow-lg shadow-cyan-500/10'
                       : 'bg-slate-800/40 border-slate-700/40 hover:border-slate-600'
                   }`}
                 >
                   <div className={`text-[10px] sm:text-xs font-bold tracking-wider uppercase mb-1 ${
-                    todayMatch ? 'text-amber-400' : 'text-slate-400'
+                    todayMatch ? 'text-cyan-400' : 'text-slate-400'
                   }`}>
                     {date.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase()}
                   </div>
                   <div className={`text-lg sm:text-xl font-bold mb-1.5 ${
-                    todayMatch ? 'text-amber-300' : 'text-slate-200'
+                    todayMatch ? 'text-cyan-300' : 'text-slate-200'
                   }`}>
                     {date.getDate()}
                   </div>
                   <div className="h-1 bg-slate-700 rounded-full overflow-hidden mb-1">
                     <div
-                      className="h-full bg-gradient-to-r from-amber-400 to-orange-500 transition-all"
+                      className="h-full bg-gradient-to-r from-cyan-400 to-sky-500 transition-all"
                       style={{ width: dayActs.length > 0 ? `${(completedCount / dayActs.length) * 100}%` : '0%' }}
                     />
                   </div>
                   <div className={`text-[9px] sm:text-[10px] font-semibold ${
                     dayActs.length > 0 && completedCount === dayActs.length
-                      ? 'text-emerald-400'
-                      : todayMatch ? 'text-amber-400/80' : 'text-slate-400'
+                      ? 'text-sky-400'
+                      : todayMatch ? 'text-cyan-400/80' : 'text-slate-400'
                   }`}>
                     {dayActs.length > 0 ? `${completedCount}/${dayActs.length}` : '—'}
                   </div>
@@ -393,7 +393,7 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
               onClick={() => setFrequencyFilter(f)}
               className={`px-2.5 py-1 rounded-lg text-[11px] font-bold uppercase tracking-wider transition-all ${
                 frequencyFilter === f
-                  ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
                   : 'bg-slate-800/60 text-slate-400 border border-slate-700 hover:border-slate-600'
               }`}
             >
@@ -409,7 +409,7 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
             onClick={() => setCategoryFilter('all')}
             className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all ${
               categoryFilter === 'all'
-                ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
                 : 'bg-slate-800/60 text-slate-400 border border-slate-700 hover:border-slate-600'
             }`}
           >
@@ -434,8 +434,8 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
       {/* Weekly targets grid */}
       {viewMode === 'weekly' && weeklyTargets.length > 0 && (
         <div className="mb-8">
-          <h3 className="text-sm font-bold tracking-wider text-amber-300/80 uppercase mb-4 flex items-center gap-2">
-            <span className="w-8 h-px bg-amber-500/40" />
+          <h3 className="text-sm font-bold tracking-wider text-cyan-300/80 uppercase mb-4 flex items-center gap-2">
+            <span className="w-8 h-px bg-cyan-500/40" />
             Weekly & Daily Targets
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -458,7 +458,7 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
           <p className="text-slate-400 text-sm mb-3">No targets for this week yet</p>
           <button
             onClick={() => { setEditingTarget(null); setFormOpen(true); }}
-            className="text-xs text-amber-400 font-bold hover:text-amber-300"
+            className="text-xs text-cyan-400 font-bold hover:text-cyan-300"
           >
             + Add your first target
           </button>
@@ -468,8 +468,8 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
       {/* Monthly targets grid */}
       {monthlyTargets.length > 0 && (
         <div className="mb-8">
-          <h3 className="text-sm font-bold tracking-wider text-amber-300/80 uppercase mb-4 flex items-center gap-2">
-            <span className="w-8 h-px bg-amber-500/40" />
+          <h3 className="text-sm font-bold tracking-wider text-cyan-300/80 uppercase mb-4 flex items-center gap-2">
+            <span className="w-8 h-px bg-cyan-500/40" />
             Monthly Goals ({getMonthName(activeMonth)})
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -492,7 +492,7 @@ export default function TargetsSection({ activities }: TargetsSectionProps) {
           <p className="text-slate-400 text-sm mb-3">No monthly goals yet</p>
           <button
             onClick={() => { setEditingTarget(null); setFormOpen(true); }}
-            className="text-xs text-amber-400 font-bold hover:text-amber-300"
+            className="text-xs text-cyan-400 font-bold hover:text-cyan-300"
           >
             + Set a monthly target
           </button>

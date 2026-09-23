@@ -48,19 +48,19 @@ function AddItemModal({ monthKey, onAdd, onClose }: {
         </div>
 
         <input
-          className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 mb-3"
+          className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500/40 mb-3"
           placeholder="Title / description"
           value={title}
           onChange={e => setTitle(e.target.value)}
         />
         <input
-          className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 mb-3"
+          className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500/40 mb-3"
           placeholder="Amount (e.g. K500, $200) — optional"
           value={amount}
           onChange={e => setAmount(e.target.value)}
         />
         <textarea
-          className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 mb-4 resize-none"
+          className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500/40 mb-4 resize-none"
           placeholder="Notes — optional"
           rows={2}
           value={notes}
@@ -71,7 +71,7 @@ function AddItemModal({ monthKey, onAdd, onClose }: {
           <button onClick={onClose} className="flex-1 py-2.5 rounded-xl bg-slate-800 text-slate-300 text-sm font-semibold hover:bg-slate-700 transition-all">Cancel</button>
           <button
             onClick={() => { if (title.trim()) { onAdd({ type, title: title.trim(), amount: amount.trim() || undefined, notes: notes.trim() || undefined }); onClose(); } }}
-            className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white text-sm font-semibold shadow-lg transition-all"
+            className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-600 text-white text-sm font-semibold shadow-lg transition-all"
           >
             Add
           </button>
@@ -98,20 +98,20 @@ function MonthCard({ monthKey, isCurrent }: { monthKey: string; isCurrent: boole
   const typeCounts = GIVING_TYPES.map(t => ({ ...t, count: items.filter(i => i.type === t.type).length })).filter(t => t.count > 0);
 
   return (
-    <div className={`rounded-2xl border transition-all ${isCurrent ? 'border-emerald-500/40 bg-emerald-500/5' : 'border-slate-700/50 bg-slate-900/40'}`}>
+    <div className={`rounded-2xl border transition-all ${isCurrent ? 'border-sky-500/40 bg-sky-500/5' : 'border-slate-700/50 bg-slate-900/40'}`}>
       <button
         className="w-full flex items-center justify-between px-4 py-3.5"
         onClick={() => setOpen(o => !o)}
       >
         <div className="flex items-center gap-3">
           <span className="text-white font-bold text-sm">{MONTHS[month]} {year}</span>
-          {isCurrent && <span className="text-[10px] font-bold tracking-widest text-emerald-400 bg-emerald-500/20 border border-emerald-500/30 px-2 py-0.5 rounded-full">CURRENT</span>}
+          {isCurrent && <span className="text-[10px] font-bold tracking-widest text-sky-400 bg-sky-500/20 border border-sky-500/30 px-2 py-0.5 rounded-full">CURRENT</span>}
           {items.length > 0 && <span className="text-[11px] text-slate-400">{done}/{items.length}</span>}
         </div>
         <div className="flex items-center gap-2">
           {items.length > 0 && (
             <div className="w-20 h-1.5 bg-slate-800 rounded-full overflow-hidden hidden sm:block">
-              <div className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all" style={{ width: `${items.length ? (done / items.length) * 100 : 0}%` }} />
+              <div className="h-full bg-gradient-to-r from-sky-500 to-cyan-400 transition-all" style={{ width: `${items.length ? (done / items.length) * 100 : 0}%` }} />
             </div>
           )}
           {open ? <ChevronUp size={16} className="text-slate-400" /> : <ChevronDown size={16} className="text-slate-400" />}
@@ -125,7 +125,7 @@ function MonthCard({ monthKey, isCurrent }: { monthKey: string; isCurrent: boole
             <div className="mb-3 sm:hidden">
               <div className="flex justify-between text-xs text-slate-400 mb-1"><span>Progress</span><span>{done}/{items.length}</span></div>
               <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                <div className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all" style={{ width: `${items.length ? (done / items.length) * 100 : 0}%` }} />
+                <div className="h-full bg-gradient-to-r from-sky-500 to-cyan-400 transition-all" style={{ width: `${items.length ? (done / items.length) * 100 : 0}%` }} />
               </div>
             </div>
           )}
@@ -150,7 +150,7 @@ function MonthCard({ monthKey, isCurrent }: { monthKey: string; isCurrent: boole
                 <div key={item.id} className={`flex items-start gap-2.5 p-3 rounded-xl border transition-all ${item.done ? 'opacity-50 bg-slate-800/30 border-slate-700/30' : 'bg-slate-800/50 border-slate-700/50'}`}>
                   <button onClick={() => toggleItem(monthKey, item.id)} className="mt-0.5 shrink-0">
                     {item.done
-                      ? <div className="h-5 w-5 rounded-full bg-emerald-500 flex items-center justify-center"><Check size={11} className="text-white" /></div>
+                      ? <div className="h-5 w-5 rounded-full bg-sky-500 flex items-center justify-center"><Check size={11} className="text-white" /></div>
                       : <div className="h-5 w-5 rounded-full border-2 border-slate-600" />
                     }
                   </button>
@@ -160,7 +160,7 @@ function MonthCard({ monthKey, isCurrent }: { monthKey: string; isCurrent: boole
                         <input className="w-full bg-slate-700 rounded-lg px-2 py-1 text-white text-sm focus:outline-none" value={editTitle} onChange={e => setEditTitle(e.target.value)} />
                         <input className="w-full bg-slate-700 rounded-lg px-2 py-1 text-white text-xs focus:outline-none" placeholder="Amount" value={editAmount} onChange={e => setEditAmount(e.target.value)} />
                         <div className="flex gap-1">
-                          <button onClick={() => { updateItem(monthKey, item.id, { title: editTitle, amount: editAmount || undefined }); setEditId(null); }} className="px-2 py-1 rounded-lg bg-emerald-600 text-white text-xs font-bold">Save</button>
+                          <button onClick={() => { updateItem(monthKey, item.id, { title: editTitle, amount: editAmount || undefined }); setEditId(null); }} className="px-2 py-1 rounded-lg bg-sky-600 text-white text-xs font-bold">Save</button>
                           <button onClick={() => setEditId(null)} className="px-2 py-1 rounded-lg bg-slate-700 text-white text-xs">Cancel</button>
                         </div>
                       </div>
@@ -169,7 +169,7 @@ function MonthCard({ monthKey, isCurrent }: { monthKey: string; isCurrent: boole
                         <div className="flex items-center gap-1.5 flex-wrap">
                           <span className={`text-[10px] font-bold ${meta.color}`}>{meta.emoji} {item.type}</span>
                           <span className={`text-sm font-medium ${item.done ? 'line-through text-slate-500' : 'text-white'}`}>{item.title}</span>
-                          {item.amount && <span className="text-xs text-emerald-400 font-bold">{item.amount}</span>}
+                          {item.amount && <span className="text-xs text-sky-400 font-bold">{item.amount}</span>}
                         </div>
                         {item.notes && <p className="text-xs text-slate-400 mt-0.5">{item.notes}</p>}
                       </>
@@ -188,7 +188,7 @@ function MonthCard({ monthKey, isCurrent }: { monthKey: string; isCurrent: boole
 
           <button
             onClick={() => setShowAdd(true)}
-            className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-dashed border-slate-600 text-slate-400 hover:border-emerald-500/50 hover:text-emerald-400 text-sm font-semibold transition-all"
+            className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-dashed border-slate-600 text-slate-400 hover:border-sky-500/50 hover:text-sky-400 text-sm font-semibold transition-all"
           >
             <Plus size={15} /> Add Item
           </button>
@@ -220,7 +220,7 @@ function YearEndTab() {
         </div>
         <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-yellow-500 to-amber-400 transition-all duration-500"
+            className="h-full bg-gradient-to-r from-cyan-500 to-cyan-400 transition-all duration-500"
             style={{ width: `${yearEndTargets.length ? (fulfilled / yearEndTargets.length) * 100 : 0}%` }}
           />
         </div>
@@ -228,12 +228,12 @@ function YearEndTab() {
 
       <div className="space-y-3 mb-4">
         {yearEndTargets.map(t => (
-          <div key={t.id} className={`p-4 rounded-2xl border transition-all ${t.fulfilled ? 'border-amber-500/40 bg-amber-500/5' : 'border-slate-700/50 bg-slate-900/40'}`}>
+          <div key={t.id} className={`p-4 rounded-2xl border transition-all ${t.fulfilled ? 'border-cyan-500/40 bg-cyan-500/5' : 'border-slate-700/50 bg-slate-900/40'}`}>
             {editId === t.id ? (
               <div className="space-y-2">
                 <input className="w-full bg-slate-800 rounded-xl px-3 py-2 text-white text-sm focus:outline-none border border-slate-700" value={editTitle} onChange={e => setEditTitle(e.target.value)} />
                 <div className="flex gap-2">
-                  <button onClick={() => { updateYearTarget(t.id, { title: editTitle }); setEditId(null); }} className="px-3 py-1.5 rounded-lg bg-amber-500 text-white text-xs font-bold">Save</button>
+                  <button onClick={() => { updateYearTarget(t.id, { title: editTitle }); setEditId(null); }} className="px-3 py-1.5 rounded-lg bg-cyan-500 text-white text-xs font-bold">Save</button>
                   <button onClick={() => setEditId(null)} className="px-3 py-1.5 rounded-lg bg-slate-700 text-white text-xs">Cancel</button>
                 </div>
               </div>
@@ -241,14 +241,14 @@ function YearEndTab() {
               <div className="flex items-start gap-3">
                 <button onClick={() => toggleYearTarget(t.id)} className="mt-0.5 shrink-0">
                   {t.fulfilled
-                    ? <div className="h-6 w-6 rounded-full bg-amber-500 flex items-center justify-center"><Check size={13} className="text-white" /></div>
+                    ? <div className="h-6 w-6 rounded-full bg-cyan-500 flex items-center justify-center"><Check size={13} className="text-white" /></div>
                     : <div className="h-6 w-6 rounded-full border-2 border-slate-600" />
                   }
                 </button>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className={`text-sm font-bold ${t.fulfilled ? 'line-through text-slate-500' : 'text-white'}`}>{t.title}</span>
-                    {t.amount && <span className="text-xs text-amber-400 font-bold">{t.amount}</span>}
+                    {t.amount && <span className="text-xs text-cyan-400 font-bold">{t.amount}</span>}
                   </div>
                   {t.description && <p className="text-xs text-slate-400 mt-0.5">{t.description}</p>}
                 </div>
@@ -269,17 +269,17 @@ function YearEndTab() {
       </div>
 
       {showAdd ? (
-        <div className="p-4 rounded-2xl border border-amber-500/30 bg-amber-500/5 space-y-2">
+        <div className="p-4 rounded-2xl border border-cyan-500/30 bg-cyan-500/5 space-y-2">
           <input className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-white text-sm placeholder-slate-500 focus:outline-none" placeholder="Target title" value={title} onChange={e => setTitle(e.target.value)} />
           <input className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-white text-sm placeholder-slate-500 focus:outline-none" placeholder="Amount (optional)" value={amount} onChange={e => setAmount(e.target.value)} />
           <textarea className="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2.5 text-white text-sm placeholder-slate-500 focus:outline-none resize-none" placeholder="Description (optional)" rows={2} value={desc} onChange={e => setDesc(e.target.value)} />
           <div className="flex gap-2">
             <button onClick={() => setShowAdd(false)} className="flex-1 py-2 rounded-xl bg-slate-800 text-slate-300 text-sm font-semibold">Cancel</button>
-            <button onClick={() => { if (title.trim()) { addYearTarget({ title: title.trim(), description: desc.trim() || undefined, amount: amount.trim() || undefined }); setTitle(''); setDesc(''); setAmount(''); setShowAdd(false); } }} className="flex-1 py-2 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-500 text-white text-sm font-semibold">Add Target</button>
+            <button onClick={() => { if (title.trim()) { addYearTarget({ title: title.trim(), description: desc.trim() || undefined, amount: amount.trim() || undefined }); setTitle(''); setDesc(''); setAmount(''); setShowAdd(false); } }} className="flex-1 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-500 text-white text-sm font-semibold">Add Target</button>
           </div>
         </div>
       ) : (
-        <button onClick={() => setShowAdd(true)} className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl border border-dashed border-slate-600 text-slate-400 hover:border-amber-500/50 hover:text-amber-400 text-sm font-semibold transition-all">
+        <button onClick={() => setShowAdd(true)} className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl border border-dashed border-slate-600 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-400 text-sm font-semibold transition-all">
           <Plus size={15} /> Add Year-End Target
         </button>
       )}
@@ -297,9 +297,9 @@ export default function GivingSection() {
     <div className="max-w-3xl mx-auto px-4 py-8">
       {/* Header */}
       <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-3">
-          <Banknote size={14} className="text-emerald-400" />
-          <span className="text-xs font-bold tracking-[0.2em] text-emerald-400 uppercase">Financial Stewardship</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 mb-3">
+          <Banknote size={14} className="text-sky-400" />
+          <span className="text-xs font-bold tracking-[0.2em] text-sky-400 uppercase">Financial Stewardship</span>
         </div>
         <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-2 text-white" style={{ fontFamily: "'Montserrat', 'Inter', sans-serif" }}>
           My Giving
@@ -311,10 +311,10 @@ export default function GivingSection() {
 
       {/* Tab toggle */}
       <div className="flex p-1 rounded-full bg-slate-800/70 border border-slate-700/50 mb-6 max-w-xs mx-auto">
-        <button onClick={() => setActiveTab('monthly')} className={`flex-1 py-2 rounded-full text-sm font-semibold transition-all ${activeTab === 'monthly' ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg' : 'text-slate-400 hover:text-slate-200'}`}>
+        <button onClick={() => setActiveTab('monthly')} className={`flex-1 py-2 rounded-full text-sm font-semibold transition-all ${activeTab === 'monthly' ? 'bg-gradient-to-r from-sky-500 to-cyan-600 text-white shadow-lg' : 'text-slate-400 hover:text-slate-200'}`}>
           Monthly
         </button>
-        <button onClick={() => setActiveTab('yearend')} className={`flex-1 py-2 rounded-full text-sm font-semibold transition-all ${activeTab === 'yearend' ? 'bg-gradient-to-r from-yellow-500 to-amber-500 text-white shadow-lg' : 'text-slate-400 hover:text-slate-200'}`}>
+        <button onClick={() => setActiveTab('yearend')} className={`flex-1 py-2 rounded-full text-sm font-semibold transition-all ${activeTab === 'yearend' ? 'bg-gradient-to-r from-cyan-500 to-sky-500 text-white shadow-lg' : 'text-slate-400 hover:text-slate-200'}`}>
           End of Year
         </button>
       </div>

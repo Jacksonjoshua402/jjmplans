@@ -21,7 +21,7 @@ export default function MessageCard({ message, onView }: MessageCardProps) {
   return (
     <div
       onClick={() => onView(message)}
-      className="group relative text-left bg-gradient-to-br from-slate-800/80 to-slate-900/80 rounded-2xl border border-slate-700/50 overflow-hidden hover:border-amber-500/40 hover:shadow-2xl hover:shadow-amber-500/10 transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+      className="group relative text-left bg-gradient-to-br from-slate-800/80 to-slate-900/80 rounded-2xl border border-slate-700/50 overflow-hidden hover:border-cyan-500/40 hover:shadow-2xl hover:shadow-cyan-500/10 transition-all duration-300 hover:-translate-y-1 cursor-pointer"
     >
       {/* Cover image */}
       <div className="relative w-full bg-slate-800 overflow-hidden">
@@ -33,8 +33,8 @@ export default function MessageCard({ message, onView }: MessageCardProps) {
             className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500"
           />
         ) : (
-          <div className="w-full aspect-video flex items-center justify-center bg-gradient-to-br from-amber-500/15 to-orange-500/15">
-            <BookOpen size={40} className="text-amber-400/40" />
+          <div className="w-full aspect-video flex items-center justify-center bg-gradient-to-br from-cyan-500/15 to-sky-500/15">
+            <BookOpen size={40} className="text-cyan-400/40" />
           </div>
         )}
 
@@ -54,7 +54,7 @@ export default function MessageCard({ message, onView }: MessageCardProps) {
 
         {/* Series tag */}
         {message.series && (
-          <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-amber-500/90 text-white text-[10px] font-bold tracking-wider uppercase">
+          <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-cyan-500/90 text-white text-[10px] font-bold tracking-wider uppercase">
             {message.series}
           </div>
         )}
@@ -69,7 +69,7 @@ export default function MessageCard({ message, onView }: MessageCardProps) {
         <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-slate-900 to-transparent pointer-events-none" />
 
         {/* View overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/0 to-amber-500/0 group-hover:from-amber-500/0 group-hover:to-amber-500/10 transition-all opacity-0 group-hover:opacity-100" />
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-cyan-500/0 group-hover:from-cyan-500/0 group-hover:to-cyan-500/10 transition-all opacity-0 group-hover:opacity-100" />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
           <div className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/95 backdrop-blur-sm text-slate-900 text-sm font-bold shadow-xl">
             <Eye size={16} /> View Message
@@ -80,7 +80,7 @@ export default function MessageCard({ message, onView }: MessageCardProps) {
       {/* Content */}
       <div className="p-5 space-y-3">
         <h3
-          className="text-lg font-bold text-amber-100 group-hover:text-amber-300 transition-colors line-clamp-2 leading-snug"
+          className="text-lg font-bold text-cyan-100 group-hover:text-cyan-300 transition-colors line-clamp-2 leading-snug"
         >
           {message.title}
         </h3>
@@ -96,7 +96,7 @@ export default function MessageCard({ message, onView }: MessageCardProps) {
             <Calendar size={11} /> {formatDate(message.date)}
           </span>
           {message.scriptureRef && (
-            <span className="flex items-center gap-1 text-amber-400/70">
+            <span className="flex items-center gap-1 text-cyan-400/70">
               <BookOpen size={11} /> {message.scriptureRef}
             </span>
           )}

@@ -9,7 +9,7 @@ export default function AuthGate({ children }: { children: ReactNode }) {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-950">
-        <Loader2 size={28} className="animate-spin text-amber-400" />
+        <Loader2 size={28} className="animate-spin text-cyan-400" />
       </div>
     );
   }

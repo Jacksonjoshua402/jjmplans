@@ -15,7 +15,7 @@ export default function PillarCard({ pillar, onEdit, onToggle }: PillarCardProps
       className={`group relative text-left w-full rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
         pillar.isActive
           ? hasContent
-            ? 'bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700/50 hover:border-amber-500/30 hover:shadow-amber-500/5'
+            ? 'bg-gradient-to-br from-slate-800/80 to-slate-900/80 border-slate-700/50 hover:border-cyan-500/30 hover:shadow-cyan-500/5'
             : 'bg-gradient-to-br from-slate-800/40 to-slate-900/40 border-slate-700/40 hover:border-slate-600/50'
           : 'bg-slate-800/20 border-slate-800/30 opacity-50'
       }`}
@@ -25,7 +25,7 @@ export default function PillarCard({ pillar, onEdit, onToggle }: PillarCardProps
         <div
           className={`h-full transition-all ${
             pillar.isActive
-              ? 'bg-gradient-to-r from-amber-500 to-orange-500'
+              ? 'bg-gradient-to-r from-cyan-500 to-sky-500'
               : 'bg-slate-700'
           }`}
         />
@@ -37,12 +37,12 @@ export default function PillarCard({ pillar, onEdit, onToggle }: PillarCardProps
           <div
             className={`h-10 w-10 rounded-xl flex items-center justify-center text-lg transition-all ${
               pillar.isActive
-                ? 'bg-gradient-to-br from-amber-500/20 to-orange-500/20 border border-amber-500/30'
+                ? 'bg-gradient-to-br from-cyan-500/20 to-sky-500/20 border border-cyan-500/30'
                 : 'bg-slate-800/50 border border-slate-700/30'
             }`}
           >
             {pillar.emoji || (
-              <span className={`text-xs font-extrabold ${pillar.isActive ? 'text-amber-400' : 'text-slate-600'}`}>
+              <span className={`text-xs font-extrabold ${pillar.isActive ? 'text-cyan-400' : 'text-slate-600'}`}>
                 {pillar.number}
               </span>
             )}
@@ -54,7 +54,7 @@ export default function PillarCard({ pillar, onEdit, onToggle }: PillarCardProps
           <div className="flex items-start justify-between gap-2">
             <h3
               className={`text-sm font-bold leading-snug transition-colors ${
-                pillar.isActive ? 'text-white group-hover:text-amber-200' : 'text-slate-500'
+                pillar.isActive ? 'text-white group-hover:text-cyan-200' : 'text-slate-500'
               }`}
             >
               {pillar.title}
@@ -63,12 +63,12 @@ export default function PillarCard({ pillar, onEdit, onToggle }: PillarCardProps
               onClick={(e) => { e.stopPropagation(); onToggle(pillar.id); }}
               className={`flex-shrink-0 mt-0.5 h-5 w-5 rounded-md border-2 flex items-center justify-center transition-all cursor-pointer ${
                 pillar.isActive
-                  ? 'bg-amber-500/20 border-amber-500/60'
+                  ? 'bg-cyan-500/20 border-cyan-500/60'
                   : 'border-slate-600 hover:border-slate-500'
               }`}
             >
               {pillar.isActive && (
-                <div className="h-2 w-2 rounded-full bg-amber-400" />
+                <div className="h-2 w-2 rounded-full bg-cyan-400" />
               )}
             </span>
           </div>
@@ -81,7 +81,7 @@ export default function PillarCard({ pillar, onEdit, onToggle }: PillarCardProps
               </span>
             )}
             {pillar.keyVerses.length > 0 && (
-              <span className="text-[10px] text-amber-400/70 bg-amber-500/10 px-1.5 py-0.5 rounded">
+              <span className="text-[10px] text-cyan-400/70 bg-cyan-500/10 px-1.5 py-0.5 rounded">
                 {pillar.keyVerses.length} verse{pillar.keyVerses.length > 1 ? 's' : ''}
               </span>
             )}

@@ -49,9 +49,9 @@ export default function PropheciesSection() {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-10">
       {/* Header */}
       <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/30 mb-4">
-          <Sparkles size={14} className="text-violet-400" />
-          <span className="text-xs font-bold tracking-[0.2em] text-violet-400 uppercase">Prophetic Words</span>
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 mb-4">
+          <Sparkles size={14} className="text-cyan-400" />
+          <span className="text-xs font-bold tracking-[0.2em] text-cyan-400 uppercase">Prophetic Words</span>
         </div>
         <h1
           className="text-3xl md:text-5xl font-extrabold tracking-tight mb-2 text-white"
@@ -59,17 +59,17 @@ export default function PropheciesSection() {
         >
           Prophecy & Rhema
         </h1>
-        <p className="text-violet-200/60 text-sm max-w-xl mx-auto">
+        <p className="text-cyan-200/60 text-sm max-w-xl mx-auto">
           Record prophecies, rhema words, dreams, and visions you have received. Track their fulfillment over time.
         </p>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
-        <StatCard label="Total" count={stats.total} color="from-violet-500/20 to-fuchsia-500/20" textColor="text-violet-300" />
+        <StatCard label="Total" count={stats.total} color="from-cyan-500/20 to-sky-500/20" textColor="text-cyan-300" />
         <StatCard label="Pending" count={stats.pending} color="from-slate-700/40 to-slate-800/40" textColor="text-slate-300" />
-        <StatCard label="In Progress" count={stats.inProgress} color="from-amber-500/15 to-orange-500/15" textColor="text-amber-300" />
-        <StatCard label="Fulfilled" count={stats.fulfilled} color="from-emerald-500/15 to-teal-500/15" textColor="text-emerald-300" />
+        <StatCard label="In Progress" count={stats.inProgress} color="from-cyan-500/15 to-sky-500/15" textColor="text-cyan-300" />
+        <StatCard label="Fulfilled" count={stats.fulfilled} color="from-sky-500/15 to-cyan-500/15" textColor="text-sky-300" />
       </div>
 
       {/* Toolbar */}
@@ -81,12 +81,12 @@ export default function PropheciesSection() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search prophecies, sources, tags..."
-            className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-800/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500/40 transition-all text-sm"
+            className="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-800/50 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/40 transition-all text-sm"
           />
         </div>
         <button
           onClick={() => { setEditingProphecy(null); setFormOpen(true); }}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-sm font-semibold shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 hover:scale-[1.02] active:scale-95 transition-all whitespace-nowrap"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-500 text-white text-sm font-semibold shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.02] active:scale-95 transition-all whitespace-nowrap"
         >
           <Plus size={16} /> New Prophecy
         </button>
@@ -102,7 +102,7 @@ export default function PropheciesSection() {
               onClick={() => setStatusFilter(s)}
               className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all ${
                 statusFilter === s
-                  ? 'bg-violet-500/20 text-violet-300 border border-violet-500/40'
+                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
                   : 'bg-slate-800/60 text-slate-400 border border-slate-700 hover:border-slate-600'
               }`}
             >
@@ -119,7 +119,7 @@ export default function PropheciesSection() {
             onClick={() => setTypeFilter('all')}
             className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all ${
               typeFilter === 'all'
-                ? 'bg-violet-500/20 text-violet-300 border border-violet-500/40'
+                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
                 : 'bg-slate-800/60 text-slate-400 border border-slate-700 hover:border-slate-600'
             }`}
           >
@@ -155,10 +155,10 @@ export default function PropheciesSection() {
         </div>
       ) : (
         <div className="text-center py-20 bg-slate-900/30 rounded-2xl border border-dashed border-slate-700">
-          <div className="inline-flex h-16 w-16 rounded-2xl bg-violet-500/10 items-center justify-center mb-4 text-3xl">
+          <div className="inline-flex h-16 w-16 rounded-2xl bg-cyan-500/10 items-center justify-center mb-4 text-3xl">
             🔮
           </div>
-          <h3 className="text-violet-200/70 font-semibold mb-1">
+          <h3 className="text-cyan-200/70 font-semibold mb-1">
             {prophecies.length === 0 ? 'No prophecies recorded yet' : 'No matches'}
           </h3>
           <p className="text-slate-400 text-sm mb-4">
@@ -169,7 +169,7 @@ export default function PropheciesSection() {
           {prophecies.length === 0 && (
             <button
               onClick={() => setFormOpen(true)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-violet-500/20 border border-violet-500/40 text-violet-300 text-sm font-semibold hover:bg-violet-500/30 transition-all"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 text-sm font-semibold hover:bg-cyan-500/30 transition-all"
             >
               <Plus size={16} /> Record Your First Prophecy
             </button>
@@ -179,13 +179,13 @@ export default function PropheciesSection() {
 
       {/* Verse */}
       <div className="mt-12 text-center">
-        <div className="inline-block px-8 py-5 rounded-2xl bg-slate-900/50 border border-violet-500/20 backdrop-blur-sm">
-          <p className="text-violet-200/90 italic text-base mb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
-            <span className="text-violet-400/60">"</span>
+        <div className="inline-block px-8 py-5 rounded-2xl bg-slate-900/50 border border-cyan-500/20 backdrop-blur-sm">
+          <p className="text-cyan-200/90 italic text-base mb-1" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>
+            <span className="text-cyan-400/60">"</span>
             Despise not prophesyings. Prove all things; hold fast that which is good.
-            <span className="text-violet-400/60">"</span>
+            <span className="text-cyan-400/60">"</span>
           </p>
-          <p className="text-violet-400 text-xs font-bold tracking-widest">
+          <p className="text-cyan-400 text-xs font-bold tracking-widest">
             — 1 THESSALONIANS 5:20-21 ✦ JJM 2026
           </p>
         </div>

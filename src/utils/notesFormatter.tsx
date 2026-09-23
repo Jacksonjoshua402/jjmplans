@@ -23,7 +23,7 @@ export function renderNotes(text: string): React.ReactNode {
     // Heading H1
     if (trimmed.startsWith('# ')) {
       return (
-        <h3 key={idx} className="text-lg font-bold text-amber-300 mt-3 mb-1.5" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+        <h3 key={idx} className="text-lg font-bold text-cyan-300 mt-3 mb-1.5" style={{ fontFamily: "'Montserrat', sans-serif" }}>
           {renderInline(trimmed.slice(2))}
         </h3>
       );
@@ -32,7 +32,7 @@ export function renderNotes(text: string): React.ReactNode {
     // Heading H2
     if (trimmed.startsWith('## ')) {
       return (
-        <h4 key={idx} className="text-base font-bold text-amber-200 mt-2 mb-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+        <h4 key={idx} className="text-base font-bold text-cyan-200 mt-2 mb-1" style={{ fontFamily: "'Montserrat', sans-serif" }}>
           {renderInline(trimmed.slice(3))}
         </h4>
       );
@@ -42,7 +42,7 @@ export function renderNotes(text: string): React.ReactNode {
     if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
       return (
         <div key={idx} className="flex gap-2 items-start ml-2 my-1">
-          <span className="text-amber-400 mt-1">•</span>
+          <span className="text-cyan-400 mt-1">•</span>
           <span className="flex-1 text-slate-200 leading-relaxed">{renderInline(trimmed.slice(2))}</span>
         </div>
       );
@@ -51,8 +51,8 @@ export function renderNotes(text: string): React.ReactNode {
     // Quote / blockquote
     if (trimmed.startsWith('> ')) {
       return (
-        <div key={idx} className="border-l-2 border-amber-500/40 pl-3 py-1 my-1.5 bg-amber-500/5">
-          <p className="text-sm text-amber-100/90 italic leading-relaxed">{renderInline(trimmed.slice(2))}</p>
+        <div key={idx} className="border-l-2 border-cyan-500/40 pl-3 py-1 my-1.5 bg-cyan-500/5">
+          <p className="text-sm text-cyan-100/90 italic leading-relaxed">{renderInline(trimmed.slice(2))}</p>
         </div>
       );
     }
@@ -82,7 +82,7 @@ function renderInline(text: string): React.ReactNode {
       return (
         <span
           key={i}
-          className="bg-yellow-400/85 text-slate-900 px-1.5 py-0.5 rounded font-semibold"
+          className="bg-cyan-400/85 text-slate-900 px-1.5 py-0.5 rounded font-semibold"
           style={{ boxDecorationBreak: 'clone', WebkitBoxDecorationBreak: 'clone' }}
         >
           {part.slice(2, -2)}
@@ -93,7 +93,7 @@ function renderInline(text: string): React.ReactNode {
       return <strong key={i} className="font-bold text-white">{part.slice(2, -2)}</strong>;
     }
     if (part.startsWith('*') && part.endsWith('*') && part.length > 2) {
-      return <em key={i} className="italic text-amber-200">{part.slice(1, -1)}</em>;
+      return <em key={i} className="italic text-cyan-200">{part.slice(1, -1)}</em>;
     }
     return <React.Fragment key={i}>{part}</React.Fragment>;
   });
